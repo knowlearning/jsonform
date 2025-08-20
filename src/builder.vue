@@ -26,10 +26,7 @@ function handleBuilderUpdate() {
 onMounted(async () => {
   formBuilderInstance = await $(builder.value).formBuilder({
     formData: JSON.parse(JSON.stringify(state.formData)),
-    onAddFieldAfter: handleBuilderUpdate,
-    onDeleteFieldAfter: handleBuilderUpdate,
-    onCloseFieldEdit: handleBuilderUpdate,
-    onClear: handleBuilderUpdate
+    onSave: handleBuilderUpdate
   }).promise
 })
 
