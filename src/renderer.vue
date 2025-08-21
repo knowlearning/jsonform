@@ -2,30 +2,47 @@
   import { ref, watch, onMounted, reactive } from 'vue'
   import * as jsonpatch from 'fast-json-patch'
 
+  const copy = x => JSON.parse(JSON.stringify(x))
+
   const props = defineProps({ id: String })
 
   let rendererInstance
   const renderer = ref(null)
   const runstate = await Agent.state(`runstate/${props.id}`)
 
-  if (!runstate.submissions) runstate.submissions = []
-
-  Agent
-    .watch(props.id, ({ state }) => {
-      $(renderer.value).formRender({ formData: JSON.parse(JSON.stringify(state.formData)) })
-    })
+  if (!runstate.submissions) runstate.submissions = {}
 
   onMounted(async () => {
-    rendererInstance = $(renderer.value).formRender({ formData: await Agent.state(props.id).then(s => s.formData) })
+    const formData = copy(await Agent.state(props.id).then(s => s.formData))
+    formData
+      .forEach(d => {
+        if (runstate.submissions[d.name]) {
+          d.userData = copy(runstate.submissions[d.name])
+        }
+      })
+    console.log('form data we\'re feeding in', formData)
+    rendererInstance = (
+      $(renderer.value)
+        .formRender({ formData })
+    )
   })
 
   function updateRunstate() {
     if (rendererInstance) {
-      const newUserFormSubmissions = rendererInstance.userData
-      const patches = jsonpatch.compare(runstate.submissions, newUserFormSubmissions)
-      if (patches.length > 0) {
-        jsonpatch.applyPatch(runstate.submissions, patches)
-      }
+      console.log('saving...', rendererInstance.userData)
+      const currentSubmissions = (
+        rendererInstance
+          .userData
+          .reduce((acc, cur) => {
+            acc[cur.name] = cur.userData
+            return acc
+          }, {})
+      )
+      Object
+        .entries(currentSubmissions)
+        .forEach(([name, userData]) => {
+          runstate.submissions[name] = userData
+        })
       console.log(JSON.stringify(runstate, null, 4))
     }
   }
