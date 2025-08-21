@@ -3,12 +3,16 @@
   import Renderer from './renderer.vue'
 
   const id = window.location.pathname.slice(1)
+  const embedded = Agent.embedded
 </script>
 
 <template>
   <suspense>
     <div id="container">
-      <Builder :id="id" />
+      <Builder
+        v-if="!embedded"
+        :id="id"
+      />
       <Renderer :id="id" />
     </div>
   </suspense>
