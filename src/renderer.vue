@@ -60,7 +60,7 @@
 <style scoped>
 
 .render-wrapper {
-  max-width: 540px;
+  max-width: 360px;
   margin: 0 auto;
   padding: 1rem;
 }
