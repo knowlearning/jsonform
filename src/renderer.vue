@@ -34,7 +34,7 @@
         rendererInstance
           .userData
           .reduce((acc, cur) => {
-            acc[cur.name] = cur.userData
+            if (cur.userData && cur.name) acc[cur.name] = cur.userData
             return acc
           }, {})
       )
