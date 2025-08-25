@@ -20,7 +20,6 @@
           d.userData = copy(runstate.submissions[d.name])
         }
       })
-    console.log('form data we\'re feeding in', formData)
     rendererInstance = (
       $(renderer.value)
         .formRender({ formData })
@@ -34,7 +33,7 @@
         rendererInstance
           .userData
           .reduce((acc, cur) => {
-            if (cur.userData && cur.name) acc[cur.name] = cur.userData
+            if (cur.userData) acc[cur.name] = cur.userData
             return acc
           }, {})
       )
@@ -50,13 +49,20 @@
 </script>
 
 <template>
-  <div>
+  <div class="render-wrapper">
     <div ref="renderer" />
     <div>
-      <button @click="updateRunstate">Submit</button>
+      <button @click="updateRunstate">Next</button>
     </div>
   </div>
 </template>
 
 <style scoped>
+
+.render-wrapper {
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
 </style>
