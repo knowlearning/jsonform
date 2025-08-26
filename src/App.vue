@@ -1,29 +1,38 @@
 <script setup>
-  import Builder from './builder.vue'
-  import Renderer from './renderer.vue'
+import { ref, onMounted } from 'vue'
+import Builder from './builder.vue'
+import Renderer from './renderer.vue'
 
-  const id = window.location.pathname.slice(1)
-  const embedded = Agent.embedded
+const id = ref(null)
+const embedded = Agent.embedded
+
+onMounted(async () => {
+  try {
+    const formPathName = window.location.pathname.slice(1)
+    const scopeNameMetadata = await Agent.metadata(formPathName)
+    id.value = scopeNameMetadata.id
+  } catch (error) {
+    console.error('Failed to load metadata:', error)
+  }
+})
 </script>
 
 <template>
-  <suspense>
+  <Suspense>
     <div id="container">
-      <Builder
-        v-if="!embedded"
-        :id="id"
-      />
-      <Renderer :id="id" />
+      <Builder v-if="id && !embedded" :id="id" />
+      <Renderer v-if="id" :id="id" />
     </div>
-  </suspense>
+  </Suspense>
 </template>
 
 <style scoped>
-  #container {
-    display: flex;
-  }
+#container {
+  display: flex;
+  gap: 1rem;
+}
 
-  #container > div {
-    flex-grow: 1;
-  }
+#container > * {
+  flex-grow: 1;
+}
 </style>
