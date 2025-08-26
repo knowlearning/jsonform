@@ -16,6 +16,8 @@ if (!state.formData) state.formData = []
 
 let rendered = false
 
+const emit = defineEmits(['update'])
+
 function handleBuilderUpdate() {
   if (formBuilderInstance) {
     const newFormData = formBuilderInstance.actions.getData('js')
@@ -23,6 +25,7 @@ function handleBuilderUpdate() {
     if (patches.length > 0) {
       jsonpatch.applyPatch(state.formData, patches)
     }
+    emit('update')
   }
   unsaved.value = false
 }

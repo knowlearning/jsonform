@@ -5,6 +5,7 @@ import Renderer from './renderer.vue'
 
 const id = ref(null)
 const embedded = Agent.embedded
+const updated = ref(Date.now())
 
 onMounted(async () => {
   try {
@@ -20,8 +21,16 @@ onMounted(async () => {
 <template>
   <Suspense>
     <div id="container">
-      <Builder v-if="id && !embedded" :id="id" />
-      <Renderer v-if="id" :id="id" />
+      <Builder
+        v-if="id && !embedded"
+        :id="id"
+        @update="updated = Date.now()"
+      />
+      <Renderer
+        v-if="id"
+        :key="updated"
+        :id="id"
+      />
     </div>
   </Suspense>
 </template>
