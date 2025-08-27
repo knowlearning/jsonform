@@ -11,6 +11,8 @@ onMounted(async () => {
   try {
     const formPathName = window.location.pathname.slice(1)
     const scopeNameMetadata = await Agent.metadata(formPathName)
+    // i don't care that we're re-setting this on each load
+    scopeNameMetadata.active_type = "application/json;type=kl-json-form&version=1.0.1"
     id.value = scopeNameMetadata.id
   } catch (error) {
     console.error('Failed to load metadata:', error)
