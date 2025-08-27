@@ -13,8 +13,6 @@ const state = await Agent.state(props.id)
 
 const { auth: { info: { picture } } } = await Agent.environment()
 
-if (!state.formData) state.formData = []
-
 let rendered = false
 
 const emit = defineEmits(['update'])
@@ -48,6 +46,8 @@ async function copyId(id) {
   setTimeout(() => copied.value = false, 1000)  
   await copyToClipboard(id)
 }
+
+function logout() { Agent.logout() }
 
 // from da chat godz
 async function copyToClipboard(text) {
@@ -87,14 +87,24 @@ function create() {
 <template>
   <div class="wrapper">
     <div class="top-info">
-      <div>
+
+      <div class="left">
+        <img
+          :src="picture"
+          alt="User Avatar"
+          class="avatar"
+        />
+        <button @click="logout">Log Out</button>
+        
+      </div>
+
+      <div class="right">
         <h4>
-          <img
-            :src="picture"
-            alt="User Avatar"
-            class="avatar"
-          />
-          Editing Form:
+          Form Name and ID:
+          <button @click="create">Create New</button>
+        </h4>
+        <input v-model="state.name">
+        <div class="id-select-wrapper">
           <span
             id="item-id"
             @click="copyId(props.id)"
@@ -111,10 +121,13 @@ function create() {
           >
             Copied
           </span>
-          <button @click="create">Create New</button>
-        </h4>
+        </div>
+        <div class="unsaved-warning">
+          <span v-show="unsaved">Your form has unsaved changes.</span>
+          &nbsp;
+        </div>
       </div>
-      <div class="unsaved-warning" v-show="unsaved">Your form has unsaved changes</div>
+
     </div>
     <div ref="builder" />
   </div>
@@ -125,11 +138,30 @@ function create() {
   display: flex;
   flex-direction: column;
 }
-.top-info { height: 100px; }
-.top-info h4 { margin: 0; }
+.top-info {
+  display: flex;
+  padding: 3px 0 12px 0;
+}
+.top-info .left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 40px 2px 10px;
+}
+.top-info .right {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5em;
+
+}
+.top-info .right h4 {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 0.5em 0;
+}
 .top-info #item-id {
   cursor: pointer;
-  user-select: all;  
+  user-select: none;  
 }
 .top-info #copied {
   font-size: 0.75em;
@@ -146,7 +178,7 @@ function create() {
   object-fit: cover;
   display: inline-block;
   vertical-align: middle;
-  margin-right: 0.5em;
+  margin: 0.5em;
 }
 
 </style>

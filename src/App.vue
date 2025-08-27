@@ -12,6 +12,8 @@ const ownerIsUser = ref(false)
 const validPath = ref(null)
 const loading = ref(true)
 
+const FORM_TYPE = "application/json;type=kl-json-form&version=1.0.1"
+
 onMounted(async () => {
   const { auth: { user } } = await Agent.environment()
   const pathId = window.location.pathname.slice(1)
@@ -29,16 +31,22 @@ onMounted(async () => {
   loading.value = false
 })
 
-function create() {
-  window.location = `/${Agent.uuid()}`
+async function create(formData = [], name = "New Form") {
+  const id = Agent.uuid()
+  const state = await Agent.state(id)
+  state.name = name
+  state.formData = formData
+  const md = await Agent.metadata(id)
+  md.active_type = FORM_TYPE
+  window.location = `/${id}`
 }
 
-async function copy() {
-  const { formData=[] } = await Agent.state(id.value)
-  const myId = Agent.uuid()
-  const myState = await Agent.state(myId)
-  myState.formData = JSON.parse(JSON.stringify(formData))
-  window.location = `/${myId}`
+async function copy(id) {
+  const { formData = [], name = "New Form" } = await Agent.state(id)
+  create(
+    JSON.parse(JSON.stringify(formData)),
+    `Copy of ${name}`
+  )
 }
 </script>
 
@@ -49,7 +57,7 @@ async function copy() {
       id="container"
       v-else-if="validPath === false"
     >
-      <button @click="create">Create Form</button>
+      <button @click="create()">Create Form</button>
     </div>
     <div
       id="container"
@@ -63,7 +71,7 @@ async function copy() {
       <div>
         <button
           v-if="!embedded && !ownerIsUser"
-          @click="copy"
+          @click="copy(id)"
         >
           Make my own copy to edit
         </button>

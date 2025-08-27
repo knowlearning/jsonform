@@ -27,7 +27,6 @@ const lockScroll = () => {
   if (!props.fullscreen) return
   const original = document.body.style.overflow
   document.body.dataset._overlayOverflow = original
-  document.body.style.overflow = 'hidden'
 }
 
 const unlockScroll = () => {
