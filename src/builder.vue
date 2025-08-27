@@ -112,7 +112,7 @@ async function copyToClipboard(text) {
   display: flex;
   flex-direction: column;
 }
-.top-info { height: 80px; }
+.top-info { height: 100px; }
 .top-info h4 { margin: 0; }
 .top-info #item-id {
   cursor: pointer;
