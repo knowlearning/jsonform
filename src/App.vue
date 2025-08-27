@@ -21,11 +21,6 @@ onMounted(async () => {
   if (validPath) {
     const md = await Agent.metadata(pathId)
     ownerIsUser.value = md.owner === user
-
-    if (ownerIsUser && !md.active_type) {
-      md.active_type = "application/json;type=kl-json-form&version=1.0.1"
-    }
-
     id.value = md.id
   }
   loading.value = false
@@ -38,6 +33,7 @@ async function create(formData = [], name = "New Form") {
   state.formData = formData
   const md = await Agent.metadata(id)
   md.active_type = FORM_TYPE
+  await Agent.synced()
   window.location = `/${id}`
 }
 
@@ -67,6 +63,7 @@ async function copy(id) {
         v-if="!embedded && ownerIsUser"
         :id="id"
         @update="updated = Date.now()"
+        @create="create()"
       />
       <div>
         <button

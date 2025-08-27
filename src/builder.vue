@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue'
 import * as jsonpatch from 'fast-json-patch'
 
 const props = defineProps({ id: String })
+const emit = defineEmits([ 'create', 'update' ])
 
 let formBuilderInstance
 
@@ -14,8 +15,6 @@ const state = await Agent.state(props.id)
 const { auth: { info: { picture } } } = await Agent.environment()
 
 let rendered = false
-
-const emit = defineEmits(['update'])
 
 function handleBuilderUpdate() {
   if (formBuilderInstance) {
@@ -101,7 +100,7 @@ function create() {
       <div class="right">
         <h4>
           Form Name and ID:
-          <button @click="create">Create New</button>
+          <button @click="emit('create')">Create New</button>
         </h4>
         <input v-model="state.name">
         <div class="id-select-wrapper">
