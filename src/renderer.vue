@@ -13,7 +13,7 @@
   if (!runstate.submissions) runstate.submissions = {}
 
   onMounted(async () => {
-    const formData = copy(await Agent.state(props.id).then(s => s.formData))
+    const formData = copy(await Agent.state(props.id).then(s => s.formData || []))
     formData
       .forEach(d => {
         if (runstate.submissions[d.name]) {

@@ -2,7 +2,6 @@
 import { ref, onMounted } from 'vue'
 import * as jsonpatch from 'fast-json-patch'
 
-const formPathName = window.location.pathname.slice(1)
 const props = defineProps({ id: String })
 
 let formBuilderInstance
@@ -11,6 +10,8 @@ const builder = ref(null)
 const unsaved = ref(false)
 const copied = ref(false)
 const state = await Agent.state(props.id)
+
+const { auth: { info: { picture } } } = await Agent.environment()
 
 if (!state.formData) state.formData = []
 
@@ -75,18 +76,29 @@ async function copyToClipboard(text) {
   }
 }
 
+function create() {
+  if (confirm('Are you sure? Save this id if you want to edit it again.')) {
+    window.location = `/${Agent.uuid()}`
+  }
+}
+
 </script>
 
 <template>
   <div class="wrapper">
     <div class="top-info">
       <div>
-        <h4>Editing Form:</h4>
-        <div>PATH: {{ formPathName }}</div>
-        <div>ID:
+        <h4>
+          <img
+            :src="picture"
+            alt="User Avatar"
+            class="avatar"
+          />
+          Editing Form:
           <span
             id="item-id"
             @click="copyId(props.id)"
+            style="font-weight: normal;"
           >
             {{ props.id }}
           </span>
@@ -99,7 +111,8 @@ async function copyToClipboard(text) {
           >
             Copied
           </span>
-        </div>
+          <button @click="create">Create New</button>
+        </h4>
       </div>
       <div class="unsaved-warning" v-show="unsaved">Your form has unsaved changes</div>
     </div>
@@ -125,4 +138,15 @@ async function copyToClipboard(text) {
 }
 
 .top-info .unsaved-warning { color: red; }
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.5em;
+}
+
 </style>
