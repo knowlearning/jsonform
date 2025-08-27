@@ -3,12 +3,14 @@ import { ref, onMounted } from 'vue'
 import { validate as isUUID } from 'uuid'
 import Builder from './builder.vue'
 import Renderer from './renderer.vue'
+import Loading from './loading.vue'
 
 const id = ref(null)
 const embedded = Agent.embedded
 const updated = ref(Date.now())
 const ownerIsUser = ref(false)
 const validPath = ref(null)
+const loading = ref(true)
 
 onMounted(async () => {
   const { auth: { user } } = await Agent.environment()
@@ -19,11 +21,12 @@ onMounted(async () => {
     ownerIsUser.value = md.owner === user
 
     if (ownerIsUser && !md.active_type) {
-      scopeNameMetadata.active_type = "application/json;type=kl-json-form&version=1.0.1"
+      md.active_type = "application/json;type=kl-json-form&version=1.0.1"
     }
 
     id.value = md.id
   }
+  loading.value = false
 })
 
 function create() {
@@ -41,9 +44,16 @@ async function copy() {
 
 <template>
   <Suspense>
+    <Loading v-if="loading" v-model="loading"  />
     <div
       id="container"
-      v-if="validPath && id"
+      v-else-if="validPath === false"
+    >
+      <button @click="create">Create Form</button>
+    </div>
+    <div
+      id="container"
+      v-else-if="validPath && id"
     >
       <Builder
         v-if="!embedded && ownerIsUser"
@@ -62,12 +72,6 @@ async function copy() {
           :id="id"
         />
       </div>
-    </div>
-    <div
-      id="container"
-      v-else
-    >
-      <button @click="create">Create Form</button>
     </div>
   </Suspense>
 </template>
