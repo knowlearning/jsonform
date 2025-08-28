@@ -3,7 +3,7 @@ import { ref, onMounted } from 'vue'
 import * as jsonpatch from 'fast-json-patch'
 
 const props = defineProps({ id: String })
-const emit = defineEmits([ 'create', 'update' ])
+const emit = defineEmits([ 'create', 'update', 'archive' ])
 
 let formBuilderInstance
 
@@ -44,6 +44,12 @@ async function copyId(id) {
   copied.value = true
   setTimeout(() => copied.value = false, 1000)  
   await copyToClipboard(id)
+}
+
+function confirmAndArchive() {
+  if (confirm("Are you sure you want to remove this item? You will not be able to undo this.")) {
+    emit('archive', props.id)
+  }
 }
 
 function logout() { Agent.logout() }
@@ -120,7 +126,9 @@ function create() {
           >
             Copied
           </span>
+          <button @click="confirmAndArchive">Remove</button>
         </div>
+
         <div class="unsaved-warning">
           <span v-show="unsaved">Your form has unsaved changes.</span>
           &nbsp;
