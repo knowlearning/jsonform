@@ -53,14 +53,12 @@ async function create(formData = [], name = "New Form") {
 }
 
 function archive(id) {
-  console.log('attemptive to archive', id)
   myKLForms[id] = false
   myLocalForms[id] = false
   window.location = '/'
 }
 
 function navToFormId(id) {
-  console.log(id)
   window.location = `/${id}`
 }
 
