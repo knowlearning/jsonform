@@ -21,7 +21,10 @@ const FORM_TYPE = "application/json;type=kl-json-form&version=1.0.1"
 
 onMounted(async () => {
   myKLForms = await Agent.state('my-forms')
-  Object.assign(myLocalForms, myKLForms) 
+  const myACTIVEKLForms = Object.fromEntries(
+    Object.entries(myKLForms).filter(([_, v]) => v)
+  )
+  Object.assign(myLocalForms, myACTIVEKLForms) 
 
   const { auth: { user } } = await Agent.environment()
   const pathId = window.location.pathname.slice(1)
@@ -49,6 +52,13 @@ async function create(formData = [], name = "New Form") {
   window.location = `/${newId}`
 }
 
+function archive(id) {
+  console.log('attemptive to archive', id)
+  myKLForms[id] = false
+  myLocalForms[id] = false
+  window.location = '/'
+}
+
 function navToFormId(id) {
   console.log(id)
   window.location = `/${id}`
@@ -67,10 +77,10 @@ async function copy(id) {
   <Suspense>
     <Loading v-if="loading" v-model="loading"  />
     <div
-      id="container"
+      id="no-id-selected-container"
       v-else-if="validPath === false"
     >
-      <button @click="create()">Create Form</button>
+      <button @click="create()">Create New Form</button>
       <FormSelector
         :forms="myLocalForms"
         :activeId="activeId"
@@ -86,6 +96,7 @@ async function copy(id) {
         :id="activeId"
         @update="updated = Date.now()"
         @create="create()"
+        @archive="archive"
       />
       <div>
         <button
@@ -104,6 +115,13 @@ async function copy(id) {
 </template>
 
 <style scoped>
+#no-id-selected-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+}
 #container {
   display: flex;
   gap: 1rem;

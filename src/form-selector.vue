@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, onMounted, defineProps, defineEmits } from 'vue'
+import { reactive, onMounted } from 'vue'
 
 const props = defineProps({
   forms: {
@@ -36,16 +36,17 @@ onMounted(async () => {
 <template>
   <div>
     <select
-		  :value="activeId"
-    	@change="emit('update', $event.target.value)"
+      :value="activeId"
+      @change="emit('update', $event.target.value)"
+      style="width: 200px;"
     >
-      <option disabled value="">Select a form...</option>
+      <option disabled value="">Select one of your forms...</option>
       <option
         v-for="(name, id) in formIdsToNames"
         :key="id"
         :value="id"
       >
-        {{ name }}
+        {{ `${id} :: ${name}` }}
       </option>
     </select>
   </div>
