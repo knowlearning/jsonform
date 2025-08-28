@@ -81,11 +81,6 @@ async function copyToClipboard(text) {
   }
 }
 
-function create() {
-  if (confirm('Are you sure? Save this id if you want to edit it again.')) {
-    window.location = `/${Agent.uuid()}`
-  }
-}
 
 </script>
 
@@ -104,10 +99,7 @@ function create() {
       </div>
 
       <div class="right">
-        <h4>
-          Form Name and ID:
-          <button @click="emit('create')">Create New</button>
-        </h4>
+        <h4>Active Form Name and ID:</h4>
         <input v-model="state.name">
         <div class="id-select-wrapper">
           <span
