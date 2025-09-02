@@ -123,6 +123,7 @@ async function copyToClipboard(text) {
 
         <div class="unsaved-warning">
           <span v-show="unsaved">Your form has unsaved changes.</span>
+          <button v-show="unsaved" @click="handleBuilderUpdate">Save</button>
           &nbsp;
         </div>
       </div>
@@ -169,6 +170,9 @@ async function copyToClipboard(text) {
 }
 
 .top-info .unsaved-warning { color: red; }
+.top-info .unsaved-warning button {
+  margin-left: 4px;
+}
 
 .avatar {
   width: 48px;
