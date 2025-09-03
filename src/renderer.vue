@@ -1,6 +1,8 @@
 <script setup>
   import { ref, watch, onMounted, reactive } from 'vue'
   import * as jsonpatch from 'fast-json-patch'
+  import isEqual from 'lodash/isEqual'
+  import debounce from 'lodash/debounce'
 
   const copy = x => JSON.parse(JSON.stringify(x))
 
@@ -24,27 +26,32 @@
       $(renderer.value)
         .formRender({ formData })
     )
+    $(renderer.value).on('input change', 'input, select, textarea', debouncedUpdate)
   })
 
   function updateRunstate() {
-    if (rendererInstance) {
-      console.log('saving...', rendererInstance.userData)
-      const currentSubmissions = (
-        rendererInstance
-          .userData
-          .reduce((acc, cur) => {
-            if (cur.userData) acc[cur.name] = cur.userData
-            return acc
-          }, {})
-      )
-      Object
-        .entries(currentSubmissions)
-        .forEach(([name, userData]) => {
-          runstate.submissions[name] = userData
-        })
-      console.log(JSON.stringify(runstate, null, 4))
-    }
+    if (!rendererInstance) return
+
+    const latest = rendererInstance.userData.reduce((acc, cur) => {
+      if (cur.userData) acc[cur.name] = cur.userData
+      return acc
+    }, {})
+
+    // add/update if different
+    Object.entries(latest).forEach(([name, nextVal]) => {
+      const prevVal = runstate.submissions[name]
+      if (!isEqual(prevVal, nextVal)) {
+        runstate.submissions[name] = copy(nextVal)
+      }
+    })
+
+    // remove keys that disappeared
+    Object.keys(runstate.submissions).forEach((name) => {
+      if (!(name in latest)) delete runstate.submissions[name]
+    })
   }
+
+  const debouncedUpdate = debounce(updateRunstate, 300)
 
 </script>
 
