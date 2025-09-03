@@ -39,23 +39,20 @@
   function updateRunstate() {
     if (!rendererInstance) return
 
-    const latest = rendererInstance.userData.reduce((acc, cur) => {
-      if (cur.userData) acc[cur.name] = cur.userData
-      return acc
-    }, {})
-
-    // add/update if different
-    Object.entries(latest).forEach(([name, nextVal]) => {
-      const prevVal = runstate.submissions[name]
-      if (!isEqual(prevVal, nextVal)) {
-        runstate.submissions[name] = copy(nextVal)
-      }
-    })
-
-    // remove keys that disappeared
-    Object.keys(runstate.submissions).forEach((name) => {
-      if (!(name in latest)) delete runstate.submissions[name]
-    })
+    rendererInstance
+      .userData
+      .filter(v => v.userData)
+      .forEach(({ name, userData }) => {
+        const prevUserData = runstate.submissions[name]
+        if (!isEqual(prevUserData, userData)) {
+          runstate.submissions[name] = copy(userData)
+          runstate.xapi = {
+            verb: 'answered',
+            object: name,
+            extensions: { userData }
+          }
+        }
+      })
   }
 
   const debouncedUpdate = debounce(updateRunstate, 300)
