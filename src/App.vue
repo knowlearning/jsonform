@@ -1,5 +1,6 @@
 <script setup>
 import { ref, reactive, onMounted } from 'vue'
+import { vueEmbedComponent } from '@knowlearning/agents/vue.js'
 import { validate as isUUID } from 'uuid'
 import Builder from './builder.vue'
 import Renderer from './renderer.vue'
@@ -111,7 +112,7 @@ async function copy(id) {
           >
             Make my own copy to edit
           </button>
-          <Renderer
+          <vueEmbedComponent
             :key="updated"
             :id="activeId"
           />

@@ -12,6 +12,13 @@
   const renderer = ref(null)
   const runstate = await Agent.state(`runstate/${props.id}`)
 
+  runstate.xapi = {
+    actor: props.id,
+    verb: 'initialized',
+    object: props.id,
+    extensions: {}
+  }
+
   if (!runstate.submissions) runstate.submissions = {}
 
   onMounted(async () => {
@@ -53,13 +60,21 @@
 
   const debouncedUpdate = debounce(updateRunstate, 300)
 
+  function submit() {
+    runstate.xapi = {
+      verb: 'completed',
+      object: props.id,
+      extensions: {}
+    }
+  }
+
 </script>
 
 <template>
   <div class="render-wrapper">
     <div ref="renderer" />
     <div>
-      <button @click="updateRunstate">Next</button>
+      <button @click="submit">Next</button>
     </div>
   </div>
 </template>
