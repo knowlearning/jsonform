@@ -77,11 +77,21 @@
 </template>
 
 <style scoped>
+  .render-wrapper {
+    max-width: 360px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+</style>
 
-.render-wrapper {
-  max-width: 360px;
-  margin: 0 auto;
-  padding: 1rem;
-}
-
+<style>
+  label.formbuilder-autocomplete-label,
+  label.formbuilder-checkbox-group-label,
+  label.formbuilder-number-label,
+  label.formbuilder-radio-group-label,
+  label.formbuilder-select-label,
+  label.formbuilder-text-label,
+  label.formbuilder-textarea-label {
+    font-weight: bold;
+  }
 </style>
