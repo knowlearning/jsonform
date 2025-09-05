@@ -94,4 +94,19 @@
   label.formbuilder-textarea-label {
     font-weight: bold;
   }
+
+.formbuilder-checkbox,
+.formbuilder-radio {
+  display: flex;
+  align-items: flex-start;
+  padding: 0.5rem 0 0 0;
+}
+.rendered-form .formbuilder-checkbox-group input[type=checkbox],
+.rendered-form .formbuilder-checkbox-group input[type=radio],
+.rendered-form .formbuilder-radio-group input[type=checkbox],
+.rendered-form .formbuilder-radio-group input[type=radio]
+{
+  margin: 5px 10px 0 0;
+}
+
 </style>
