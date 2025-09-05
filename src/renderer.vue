@@ -57,11 +57,26 @@
 
   const debouncedUpdate = debounce(updateRunstate, 300)
 
+  function allRequiredItemsAreAnswered() {
+    // for each el in formData, el.userData key DNE at initialization
+    // if user  deletes or removes data, key will exist w/value => [""]
+    return rendererInstance.options.formData.every(item => {
+        if (!item.required) return true
+        if (!item.userData?.[0]) return false
+        if (!item.userData[0].trim) return false
+        return true
+      })
+  }
+
   function submit() {
-    runstate.xapi = {
-      verb: 'completed',
-      object: props.id,
-      extensions: {}
+    if (allRequiredItemsAreAnswered()) {
+      runstate.xapi = {
+        verb: 'completed',
+        object: props.id,
+        extensions: {}
+      }
+    } else {
+      alert('please answer all required items')
     }
   }
 
