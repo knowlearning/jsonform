@@ -124,4 +124,8 @@
   margin: 5px 10px 0 0;
 }
 
+.formbuilder-required {
+  flex-shrink: 0;
+  margin-left: 4px;
+}
 </style>
