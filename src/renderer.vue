@@ -43,13 +43,29 @@
       .userData
       .filter(v => v.userData)
       .forEach(({ name, userData }) => {
+
         const prevUserData = runstate.submissions[name]
         if (!isEqual(prevUserData, userData)) {
-          runstate.submissions[name] = copy(userData)
+          let userDataCopy = copy(userData)
+          runstate.submissions[name] = userDataCopy
+
+          // for xAPI response, rip userData out of array.
+          // 'most are array of length 1'
+          // this obnoxiously makes numbers of of text inputs too, but i don't care
+          let response
+          if (userDataCopy.length === 1) {
+            const trimmed = userDataCopy[0].trim()
+            const num = Number(trimmed)
+            response = isNaN(num) || trimmed === "" ? trimmed : num
+          } else {
+            response = userDataCopy
+          }
+
           runstate.xapi = {
             verb: 'answered',
             object: name,
-            extensions: { userData }
+            result: { response },
+            // extensions: { }
           }
         }
       })
