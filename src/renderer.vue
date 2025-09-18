@@ -38,34 +38,57 @@
 
   function updateRunstate() {
     if (!rendererInstance) return
-
     rendererInstance
       .userData
       .filter(v => v.userData)
       .forEach(({ name, userData }) => {
-
         const prevUserData = runstate.submissions[name]
         if (!isEqual(prevUserData, userData)) {
+
+          // this is GIST of it, tracking for user process data state
           let userDataCopy = copy(userData)
           runstate.submissions[name] = userDataCopy
 
-          // for xAPI response, rip userData out of array.
-          // 'most are array of length 1'
-          // this obnoxiously makes numbers of of text inputs too, but i don't care
+          // this is xAPI writing, mirroring some relevant stuff
+          const itemDef = rendererInstance.options.formData.find(el => el.name === name)
+          const itemInfoToShoveIntoXapi = { name, userData: userDataCopy }
+          const { required, type, values, min, max, multiple } = itemDef
+          if (required !== undefined) itemInfoToShoveIntoXapi.required = required
+          if (type !== undefined) itemInfoToShoveIntoXapi.type = type
+          if (values !== undefined) itemInfoToShoveIntoXapi.values = values
+          if (min !== undefined) itemInfoToShoveIntoXapi.min = min
+          if (max !== undefined) itemInfoToShoveIntoXapi.max = max
+          if (multiple !== undefined) itemInfoToShoveIntoXapi.multiple = multiple
+
+          // label is janky, comes wrapped in html <td> EXCEPT for text and textarea
+          if (
+            itemDef.type === 'text'
+            || itemDef.type === 'textarea'
+            || itemDef.type === 'select'
+          ) {
+            itemInfoToShoveIntoXapi.label = itemDef.label
+          } else {
+            itemInfoToShoveIntoXapi.label = extractTextFromTD(itemDef.label)
+          }
+
+          // Keep raw userData as arrays for when it makes sense... 
+          // select-multiple and checkbox types
           let response
-          if (userDataCopy.length === 1) {
+          if (
+            itemDef.type === 'checkbox-group'
+            || itemDef.type === 'select' && multiple
+          ) {
+            response = userDataCopy
+          } else {
             const trimmed = userDataCopy[0].trim()
             const num = Number(trimmed)
             response = isNaN(num) || trimmed === "" ? trimmed : num
-          } else {
-            response = userDataCopy
           }
-
           runstate.xapi = {
             verb: 'answered',
             object: name,
             result: { response },
-            // extensions: { }
+            extensions: { item: itemInfoToShoveIntoXapi }
           }
         }
       })
@@ -95,6 +118,12 @@
       alert('please answer all required items')
     }
   }
+
+
+function extractTextFromTD(html) {
+  const match = html.match(/<td[^>]*>(.*?)<\/td>/i);
+  return match ? match[1] : null;
+}
 
 </script>
 
