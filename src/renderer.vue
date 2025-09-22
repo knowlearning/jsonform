@@ -60,15 +60,12 @@
           if (max !== undefined) itemInfoToShoveIntoXapi.max = max
           if (multiple !== undefined) itemInfoToShoveIntoXapi.multiple = multiple
 
-          // label is janky, comes wrapped in html <td> EXCEPT for text and textarea
-          if (
-            itemDef.type === 'text'
-            || itemDef.type === 'textarea'
-            || itemDef.type === 'select'
-          ) {
+          itemInfoToShoveIntoXapi.label = extractTextFromTag(itemDef.label, "span")
+          if (!itemInfoToShoveIntoXapi.label) {
+            itemInfoToShoveIntoXapi.label = extractTextFromTag(itemDef.label, "td")
+          }
+          if (!itemInfoToShoveIntoXapi.label) {
             itemInfoToShoveIntoXapi.label = itemDef.label
-          } else {
-            itemInfoToShoveIntoXapi.label = extractTextFromTD(itemDef.label)
           }
 
           // Keep raw userData as arrays for when it makes sense... 
@@ -119,9 +116,9 @@
     }
   }
 
-
-function extractTextFromTD(html) {
-  const match = html.match(/<td[^>]*>(.*?)<\/td>/i);
+function extractTextFromTag(html, tagName) {
+  const regex = new RegExp(`<${tagName}[^>]*>(.*?)<\\/${tagName}>`, "i");
+  const match = html.match(regex);
   return match ? match[1] : null;
 }
 
