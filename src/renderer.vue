@@ -3,14 +3,11 @@
   import * as jsonpatch from 'fast-json-patch'
   import isEqual from 'lodash/isEqual'
   import debounce from 'lodash/debounce'
+  import TRANSLATION_MAP from './translationsCombined.js'
 
   const copy = x => JSON.parse(JSON.stringify(x))
 
   const props = defineProps({ id: String })
-
-  // TODO: Fetch Forced Language
-  const lang = 'fr'
-
 
   let rendererInstance
   const renderer = ref(null)
@@ -28,28 +25,38 @@
   onMounted(async () => {
     const formData = copy(await Agent.state(props.id).then(s => s.formData || []))
 
+    // TODO: Fetch Forced Language
+    const lang = 'fr'
+
     // for formData... look at each item, translate the labels if possible
     formData.forEach((el,i) => {
-      // 1. look at el.name, see if translation(s) exist in forced language
-      // but NOT JUST el.name... cuz for paragraphs and headers there is no name... buzzkill
-      let ref = el.name ? el.name : `${props.id}_${el.type}_${i}`
+      // 1. look at el.name, see if translation exists in forced language
+      // but for paragraphs and headers there is no name, so use this janky convention.
+      const ref = el.name || `${props.id}_${el.type}_${i}`
 
-      const TRANSLATION_MAP = {
-        test_form_42: {
-          fr: "Bonjour mon ami",
-          pl: '.....'
-        },
-        '3db2de80-9e20-11f0-9ba1-5d41d92f7b72_header_2': {
-          fr: "Mon Header en Francais"
-        },
-        '3db2de80-9e20-11f0-9ba1-5d41d92f7b72_paragraph_1': {
-          fr: "french paragraph lorem french french paragraph"
-        }
+      // 2. Inject translations for el.label, failing HARD if not found
+      const translation = TRANSLATION_MAP?.[ref]?.[lang]
+      if (translation) {
+        el.label = translation
+      } else {
+        el.label = `No translation of ${ref} in ${lang}`
+        console.warn(`No translation of ${ref} in ${lang}`)
       }
 
-      // 2. if so, inject translations for el.label and any el.values[n].label
-      // TODO:  IF NOT FOUND, FAIL HARD (THROW ERROR IN CONSOLE AND RENDER GROSSLY ON THE SCREEN)
-      el.label = TRANSLATION_MAP?.[ref]?.[lang] || el.label + "????"
+      // 3. inject translations for any el.values[n].label, failing HARD if not found
+      if (el.values) {
+        el.values.forEach(({ label, value }, i) => {
+          const ref = `${el.name}_values_${value}` // our convention
+          const translation = TRANSLATION_MAP?.[ref]?.[lang]
+          if (translation) {
+            el.values[i].label = translation
+            label = translation
+          } else {
+            el.values[i].label = `No translation of ${ref} in ${lang}`
+            console.warn(`No translation of ${ref} in ${lang}`)
+          }
+        })
+      }
     })
 
     // populate user runstate
