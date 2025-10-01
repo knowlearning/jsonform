@@ -3,6 +3,7 @@
   import * as jsonpatch from 'fast-json-patch'
   import isEqual from 'lodash/isEqual'
   import debounce from 'lodash/debounce'
+  import TRANSLATION_MAP from './translationsCombined.js'
 
   const copy = x => JSON.parse(JSON.stringify(x))
 
@@ -23,6 +24,42 @@
 
   onMounted(async () => {
     const formData = copy(await Agent.state(props.id).then(s => s.formData || []))
+
+    // TODO: Fetch Forced Language
+    const lang = 'fr'
+
+    // for formData... look at each item, translate the labels if possible
+    formData.forEach((el,i) => {
+      // 1. look at el.name, see if translation exists in forced language
+      // but for paragraphs and headers there is no name, so use this janky convention.
+      const ref = el.name || `${props.id}_${el.type}_${i}`
+
+      // 2. Inject translations for el.label, failing HARD if not found
+      const translation = TRANSLATION_MAP?.[ref]?.[lang]
+      if (translation) {
+        el.label = translation
+      } else {
+        el.label = `No translation of ${ref} in ${lang}`
+        console.warn(`No translation of ${ref} in ${lang}`)
+      }
+
+      // 3. inject translations for any el.values[n].label, failing HARD if not found
+      if (el.values) {
+        el.values.forEach(({ label, value }, i) => {
+          const ref = `${el.name}_values_${value}` // our convention
+          const translation = TRANSLATION_MAP?.[ref]?.[lang]
+          if (translation) {
+            el.values[i].label = translation
+            label = translation
+          } else {
+            el.values[i].label = `No translation of ${ref} in ${lang}`
+            console.warn(`No translation of ${ref} in ${lang}`)
+          }
+        })
+      }
+    })
+
+    // populate user runstate
     formData
       .forEach(d => {
         if (runstate.submissions[d.name]) {
@@ -142,6 +179,14 @@ function extractTextFromTag(html, tagName) {
 </style>
 
 <style>
+  .rendered-form {
+    -webkit-user-select: none;  /* Safari, older Chrome, iOS */
+    -moz-user-select: none;     /* Firefox */
+    -ms-user-select: none;      /* old IE/Edge */
+    user-select: none;          /* Standard */
+    -webkit-touch-callout: none;
+  }
+
   label.formbuilder-autocomplete-label,
   label.formbuilder-checkbox-group-label,
   label.formbuilder-number-label,
