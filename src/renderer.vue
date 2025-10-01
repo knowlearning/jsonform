@@ -8,6 +8,10 @@
 
   const props = defineProps({ id: String })
 
+  // TODO: Fetch Forced Language
+  const lang = 'fr'
+
+
   let rendererInstance
   const renderer = ref(null)
   const runstate = await Agent.state(`runstate/${props.id}`)
@@ -23,6 +27,32 @@
 
   onMounted(async () => {
     const formData = copy(await Agent.state(props.id).then(s => s.formData || []))
+
+    // for formData... look at each item, translate the labels if possible
+    formData.forEach((el,i) => {
+      // 1. look at el.name, see if translation(s) exist in forced language
+      // but NOT JUST el.name... cuz for paragraphs and headers there is no name... buzzkill
+      let ref = el.name ? el.name : `${props.id}_${el.type}_${i}`
+
+      const TRANSLATION_MAP = {
+        test_form_42: {
+          fr: "Bonjour mon ami",
+          pl: '.....'
+        },
+        '3db2de80-9e20-11f0-9ba1-5d41d92f7b72_header_2': {
+          fr: "Mon Header en Francais"
+        },
+        '3db2de80-9e20-11f0-9ba1-5d41d92f7b72_paragraph_1': {
+          fr: "french paragraph lorem french french paragraph"
+        }
+      }
+
+      // 2. if so, inject translations for el.label and any el.values[n].label
+      // TODO:  IF NOT FOUND, FAIL HARD (THROW ERROR IN CONSOLE AND RENDER GROSSLY ON THE SCREEN)
+      el.label = TRANSLATION_MAP?.[ref]?.[lang] || el.label + "????"
+    })
+
+    // populate user runstate
     formData
       .forEach(d => {
         if (runstate.submissions[d.name]) {
@@ -142,6 +172,14 @@ function extractTextFromTag(html, tagName) {
 </style>
 
 <style>
+  .rendered-form {
+    -webkit-user-select: none;  /* Safari, older Chrome, iOS */
+    -moz-user-select: none;     /* Firefox */
+    -ms-user-select: none;      /* old IE/Edge */
+    user-select: none;          /* Standard */
+    -webkit-touch-callout: none;
+  }
+
   label.formbuilder-autocomplete-label,
   label.formbuilder-checkbox-group-label,
   label.formbuilder-number-label,
