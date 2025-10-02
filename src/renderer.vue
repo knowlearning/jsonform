@@ -22,6 +22,16 @@
     return translation
   })
 
+  const requiredAlertText = computed(() => {
+    if (!forcedLanguage) return "please answer all required items"
+    const translation = TRANSLATION_MAP?.alert_required?.[forcedLanguage]
+    if (!translation) {
+      console.warn(`No translation for alert_required in ${forcedLanguage}`)
+      return `No translation of alert_required in ${forcedLanguage}`
+    }
+    return translation
+  })
+
   let rendererInstance
   const renderer = ref(null)
   const runstate = await Agent.state(`runstate/${props.id}`)
@@ -162,7 +172,7 @@
         extensions: {}
       }
     } else {
-      alert('please answer all required items')
+      alert(requiredAlertText.value)
     }
   }
 

@@ -10,8 +10,12 @@ export default {
 	...teacherStems,
 	...studentStems,
 	...itemInnerValues,
-	 button_next: {
+	button_next: {
 		fr: "Suivant",
 		pl: "Dalej"
-	  }
+	},
+	alert_required: {
+		fr: "Veuillez répondre à tous les éléments obligatoires",
+		pl: "Proszę odpowiedzieć na wszystkie wymagane pytania"
+	}
 }
