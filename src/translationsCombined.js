@@ -9,5 +9,9 @@ import itemInnerValues from './translationsItemInnerValues.js'
 export default {
 	...teacherStems,
 	...studentStems,
-	...itemInnerValues
+	...itemInnerValues,
+	 button_next: {
+		fr: "Suivant",
+		pl: "Dalej"
+	  }
 }

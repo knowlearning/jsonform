@@ -1,5 +1,5 @@
 <script setup>
-  import { ref, watch, onMounted, reactive } from 'vue'
+  import { ref, computed, watch, onMounted, reactive } from 'vue'
   import * as jsonpatch from 'fast-json-patch'
   import isEqual from 'lodash/isEqual'
   import debounce from 'lodash/debounce'
@@ -11,6 +11,16 @@
 
   const env = await Agent.environment()
   const forcedLanguage = env.variables.FORCED_LANGUAGE
+
+  const nextButtonLabel = computed(() => {
+    if (!forcedLanguage) return "Next"
+    const translation = TRANSLATION_MAP?.button_next?.[forcedLanguage]
+    if (!translation) {
+      console.warn(`No translation for button_next in ${forcedLanguage}`)
+      return `No translation of button_next in ${forcedLanguage}`
+    }
+    return translation
+  })
 
   let rendererInstance
   const renderer = ref(null)
@@ -30,6 +40,7 @@
 
     // for formData... look at each item, translate the labels if possible
     if (forcedLanguage) {
+
       formData.forEach((el,i) => {
         // 1. look at el.name, see if translation exists in forced language
         // but for paragraphs and headers there is no name, so use this janky convention.
@@ -167,7 +178,7 @@ function extractTextFromTag(html, tagName) {
   <div class="render-wrapper">
     <div ref="renderer" />
     <div>
-      <button @click="submit">Next</button>
+      <button @click="submit">{{ nextButtonLabel }}</button>
     </div>
   </div>
 </template>
