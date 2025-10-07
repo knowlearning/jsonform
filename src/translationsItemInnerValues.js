@@ -43,11 +43,11 @@ export default {
         "fr": "Autre",
         "pl": "Inne"
     },
-    "tec3_values_1": {
+    "tec3_values_0": {
         "fr": "Non",
         "pl": "Nie"
     },
-    "tec3_values_2": {
+    "tec3_values_1": {
         "fr": "Oui",
         "pl": "Tak"
     },
@@ -127,11 +127,11 @@ export default {
         "fr": "Préfère ne pas dire",
         "pl": "Wolę nie mówić"
     },
-    "grt1_values_1": {
+    "grt1_values_4": {
         "fr": "CM1",
         "pl": "W 4 klasie"
     },
-    "grt1_values_2": {
+    "grt1_values_5": {
         "fr": "CM2",
         "pl": "W 5 klasie"
     },
@@ -291,11 +291,11 @@ export default {
         "fr": "Non, ils ont su s'en servir",
         "pl": "Nie, poradzili sobie"
     },
-    "log1_values_1": {
+    "log1_values_0": {
         "fr": "Non",
         "pl": "Nie"
     },
-    "log1_values_2": {
+    "log1_values_1": {
         "fr": "Oui",
         "pl": "Tak"
     },
@@ -467,11 +467,11 @@ export default {
         "fr": "Je n’étais pas sûr(e) de son utilité",
         "pl": "Nie byłem/am pewien/pewna, do czego służy"
     },
-    "int5_values_1": {
+    "int5_values_0": {
         "fr": "Non",
         "pl": "Nie"
     },
-    "int5_values_2": {
+    "int5_values_1": {
         "fr": "Oui",
         "pl": "Tak"
     },
@@ -551,11 +551,11 @@ export default {
         "fr": "Très bien",
         "pl": "Doskonale"
     },
-    "imp2_values_1": {
+    "imp2_values_0": {
         "fr": "Non",
         "pl": "Nie"
     },
-    "imp2_values_2": {
+    "imp2_values_1": {
         "fr": "Oui",
         "pl": "Tak"
     },
@@ -599,11 +599,11 @@ export default {
         "fr": "Beaucoup",
         "pl": "Dużo"
     },
-    "rec1_values_1": {
+    "rec1_values_0": {
         "fr": "Non",
         "pl": "Nie"
     },
-    "rec1_values_2": {
+    "rec1_values_1": {
         "fr": "Oui",
         "pl": "Tak"
     },
@@ -638,11 +638,11 @@ export default {
         "fr": "Non",
         "pl": "Nie"
     },
-    "sp1_values_1": {
+    "sp1_values_0": {
         "fr": "Non",
-        "pl": ""
+        "pl": "Tak"
     },
-    "sp1_values_2": {
+    "sp1_values_1": {
         "fr": "Oui"
     },
     "sp2_values_1": {
@@ -741,11 +741,11 @@ export default {
         "fr": "S3",
         "pl": "S3"
     },
-    "seq3_values_1": {
+    "seq3_values_4": {
         "fr": "CM1",
         "pl": "Dla 4 klasy"
     },
-    "seq3_values_2": {
+    "seq3_values_5": {
         "fr": "CM2",
         "pl": "Dla 5 klasy"
     },
@@ -921,131 +921,131 @@ export default {
         "fr": "Cela a paru trop court / pas assez de pratique",
         "pl": "Wydawało się zbyt krótkie / za mało ćwiczeń"
     },
-    "use4_values_1": {
+    "use4_values_0": {
         "fr": "Non",
         "pl": "Nie"
     },
-    "use4_values_2": {
+    "use4_values_1": {
         "fr": "Oui",
         "pl": "Tak"
+    },
+    "read1_values_0": {
+        "fr": "Non",
+        "pl": "Nie"
     },
     "read1_values_1": {
-        "fr": "Non",
-        "pl": "Nie"
-    },
-    "read1_values_2": {
         "fr": "Oui",
         "pl": "Tak"
+    },
+    "read2_values_0": {
+        "fr": "Non",
+        "pl": "Nie"
     },
     "read2_values_1": {
-        "fr": "Non",
-        "pl": "Nie"
-    },
-    "read2_values_2": {
         "fr": "Oui",
         "pl": "Tak"
+    },
+    "read3_values_0": {
+        "fr": "Non",
+        "pl": "Nie"
     },
     "read3_values_1": {
-        "fr": "Non",
-        "pl": "Nie"
-    },
-    "read3_values_2": {
         "fr": "Oui",
         "pl": "Tak"
+    },
+    "read4_values_0": {
+        "fr": "Non",
+        "pl": "Nie"
     },
     "read4_values_1": {
-        "fr": "Non",
-        "pl": "Nie"
-    },
-    "read4_values_2": {
         "fr": "Oui",
         "pl": "Tak"
+    },
+    "read5_values_0": {
+        "fr": "Non",
+        "pl": "Nie"
     },
     "read5_values_1": {
-        "fr": "Non",
-        "pl": "Nie"
-    },
-    "read5_values_2": {
         "fr": "Oui",
         "pl": "Tak"
+    },
+    "read6_values_0": {
+        "fr": "Non",
+        "pl": "Nie"
     },
     "read6_values_1": {
-        "fr": "Non",
-        "pl": "Nie"
-    },
-    "read6_values_2": {
         "fr": "Oui",
         "pl": "Tak"
+    },
+    "read7_values_0": {
+        "fr": "Non",
+        "pl": "Nie"
     },
     "read7_values_1": {
-        "fr": "Non",
-        "pl": "Nie"
-    },
-    "read7_values_2": {
         "fr": "Oui",
         "pl": "Tak"
+    },
+    "read8_values_0": {
+        "fr": "Non",
+        "pl": "Nie"
     },
     "read8_values_1": {
-        "fr": "Non",
-        "pl": "Nie"
-    },
-    "read8_values_2": {
         "fr": "Oui",
         "pl": "Tak"
+    },
+    "read9_values_0": {
+        "fr": "Non",
+        "pl": "Nie"
     },
     "read9_values_1": {
-        "fr": "Non",
-        "pl": "Nie"
-    },
-    "read9_values_2": {
         "fr": "Oui",
         "pl": "Tak"
+    },
+    "read10_values_0": {
+        "fr": "Non",
+        "pl": "Nie"
     },
     "read10_values_1": {
-        "fr": "Non",
-        "pl": "Nie"
-    },
-    "read10_values_2": {
         "fr": "Oui",
         "pl": "Tak"
+    },
+    "read11_values_0": {
+        "fr": "Non",
+        "pl": "Nie"
     },
     "read11_values_1": {
-        "fr": "Non",
-        "pl": "Nie"
-    },
-    "read11_values_2": {
         "fr": "Oui",
         "pl": "Tak"
+    },
+    "read12_values_0": {
+        "fr": "Non",
+        "pl": "Nie"
     },
     "read12_values_1": {
-        "fr": "Non",
-        "pl": "Nie"
-    },
-    "read12_values_2": {
         "fr": "Oui",
         "pl": "Tak"
+    },
+    "read13_values_0": {
+        "fr": "Non",
+        "pl": "Nie"
     },
     "read13_values_1": {
-        "fr": "Non",
-        "pl": "Nie"
-    },
-    "read13_values_2": {
         "fr": "Oui",
         "pl": "Tak"
+    },
+    "read14_values_0": {
+        "fr": "Non",
+        "pl": "Nie"
     },
     "read14_values_1": {
-        "fr": "Non",
-        "pl": "Nie"
-    },
-    "read14_values_2": {
         "fr": "Oui",
         "pl": "Tak"
     },
-    "read15_values_1": {
+    "read15_values_0": {
         "fr": "Non",
         "pl": "Nie"
     },
-    "read15_values_2": {
+    "read15_values_1": {
         "fr": "Oui",
         "pl": "Tak"
     },
@@ -1277,33 +1277,33 @@ export default {
         "fr": "Je préfère ne pas dire",
         "pl": "Wolę nie mówić"
     },
-    "grs1_values_1": {
+    "grs1_values_4": {
         "fr": "CM1",
         "pl": "W 4 klasie"
     },
-    "grs1_values_2": {
+    "grs1_values_5": {
         "fr": "CM2",
         "pl": "W 5 klasie"
     },
     "ses1_values_1": {
         "fr": "Aucun ou très peu (0–10 livres)",
-        "pl": "Brak lub bardzo mało (0–10 książek)"
+        "pl": "Nie ma żadnej lub jest kilka (0–10 książek)"
     },
     "ses1_values_2": {
         "fr": "De quoi remplir une étagère (11–25 livres)",
-        "pl": "Wystarczy na jedną półkę (11–25 książek)"
+        "pl": "Tyle, ile mieści się na jednej półce (11–25 książek)"
     },
     "ses1_values_3": {
         "fr": "De quoi remplir une bibliothèque (26–100 livres)",
-        "pl": "Wystarczy na jeden regał (26–100 książek)"
+        "pl": "Tyle, ile mieści się na jednym regale (26–100 książek)"
     },
     "ses1_values_4": {
         "fr": "De quoi remplir deux bibliothèques (101–200 livres)",
-        "pl": "Wystarczy na dwa regały (101–200 książek)"
+        "pl": "Tyle, ile mieści się na dwóch regałach (101–200 książek)"
     },
     "ses1_values_5": {
         "fr": "De quoi remplir trois bibliothèques ou plus (plus de 200)",
-        "pl": "Wystarczy na trzy lub więcej regałów (ponad 200)"
+        "pl": "Tyle, ile mieści się na trzech regałach albo więcej (ponad 200 książek)"
     },
     "anx1_values_1": {
         "fr": "Je suis très stressé(e)",
@@ -1315,11 +1315,11 @@ export default {
     },
     "anx1_values_3": {
         "fr": "Je ne suis pas vraiment stressé(e)",
-        "pl": "Niezbyt się stresuję"
+        "pl": "Raczej się nie stresuję"
     },
     "anx1_values_4": {
         "fr": "Je ne suis pas du tout stressé(e)",
-        "pl": "Wcale się nie stresuję"
+        "pl": "W ogóle się nie stresuję"
     },
     "anx2_values_1": {
         "fr": "Je suis très stressé(e)",
@@ -1331,11 +1331,11 @@ export default {
     },
     "anx2_values_3": {
         "fr": "Je ne suis pas vraiment stressé(e)",
-        "pl": "Niezbyt się stresuję"
+        "pl": "Raczej się nie stresuję"
     },
     "anx2_values_4": {
         "fr": "Je ne suis pas du tout stressé(e)",
-        "pl": "Wcale się nie stresuję"
+        "pl": "W ogóle się nie stresuję"
     },
     "anx3_values_1": {
         "fr": "Je suis très stressé(e)",
@@ -1347,11 +1347,11 @@ export default {
     },
     "anx3_values_3": {
         "fr": "Je ne suis pas vraiment stressé(e)",
-        "pl": "Niezbyt się stresuję"
+        "pl": "Raczej się nie stresuję"
     },
     "anx3_values_4": {
         "fr": "Je ne suis pas du tout stressé(e)",
-        "pl": "Wcale się nie stresuję"
+        "pl": "W ogóle się nie stresuję"
     },
     "anx4_values_1": {
         "fr": "Je suis très stressé(e)",
@@ -1363,11 +1363,11 @@ export default {
     },
     "anx4_values_3": {
         "fr": "Je ne suis pas vraiment stressé(e)",
-        "pl": "Niezbyt się stresuję"
+        "pl": "Raczej się nie stresuję"
     },
     "anx4_values_4": {
         "fr": "Je ne suis pas du tout stressé(e)",
-        "pl": "Wcale się nie stresuję"
+        "pl": "W ogóle się nie stresuję"
     },
     "anx5_values_1": {
         "fr": "Je suis très stressé(e)",
@@ -1379,37 +1379,43 @@ export default {
     },
     "anx5_values_3": {
         "fr": "Je ne suis pas vraiment stressé(e)",
-        "pl": "Niezbyt się stresuję"
+        "pl": "Raczej się nie stresuję"
     },
     "anx5_values_4": {
         "fr": "Je ne suis pas du tout stressé(e)",
-        "pl": "Wcale się nie stresuję"
+        "pl": "W ogóle się nie stresuję"
     },
     "anx6_values_1": {
         "fr": "Je suis très stressé(e)",
-        "pl": ""
+        "pl": "Bardzo się stresuję"
     },
     "anx6_values_2": {
-        "fr": "Je suis un peu stressé(e)"
+        "fr": "Je suis un peu stressé(e)",
+        "pl": "Trochę się stresuję"
     },
     "anx6_values_3": {
-        "fr": "Je ne suis pas vraiment stressé(e)"
+        "fr": "Je ne suis pas vraiment stressé(e)",
+        "pl": "Raczej się nie stresuję"
     },
     "anx6_values_4": {
-        "fr": "Je ne suis pas du tout stressé(e)"
+        "fr": "Je ne suis pas du tout stressé(e)",
+        "pl": "W ogóle się nie stresuję"
     },
     "anx7_values_1": {
         "fr": "Je suis très stressé(e)",
-        "pl": ""
+        "pl": "Bardzo się stresuję"
     },
     "anx7_values_2": {
-        "fr": "Je suis un peu stressé(e)"
+        "fr": "Je suis un peu stressé(e)",
+        "pl": "Trochę się stresuję"
     },
     "anx7_values_3": {
-        "fr": "Je ne suis pas vraiment stressé(e)"
+        "fr": "Je ne suis pas vraiment stressé(e)",
+        "pl": "Raczej się nie stresuję"
     },
     "anx7_values_4": {
-        "fr": "Je ne suis pas du tout stressé(e)"
+        "fr": "Je ne suis pas du tout stressé(e)",
+        "pl": "W ogóle się nie stresuję"
     },
     "app1_values_1": {
         "fr": "Très difficile",
@@ -1459,11 +1465,11 @@ export default {
         "fr": "J’étais nerveux(se) à l’idée de me tromper",
         "pl": "Denerwowałem/am się, że coś źle zrobię"
     },
-    "app3_values_1": {
+    "app3_values_0": {
         "fr": "Non",
         "pl": "Nie"
     },
-    "app3_values_2": {
+    "app3_values_1": {
         "fr": "Oui",
         "pl": "Tak"
     },
@@ -1595,11 +1601,11 @@ export default {
         "fr": "Je n’ai eu aucun problème",
         "pl": "Nie miałem/am problemów"
     },
-    "con1_values_1": {
+    "con1_values_0": {
         "fr": "Non",
         "pl": "Nie"
     },
-    "con1_values_2": {
+    "con1_values_1": {
         "fr": "Oui",
         "pl": "Tak"
     },
@@ -1671,11 +1677,11 @@ export default {
         "fr": "Je n’aime pas les maths",
         "pl": "Nie lubię matematyki"
     },
-    "ins1_values_1": {
+    "ins1_values_0": {
         "fr": "Non",
         "pl": "Nie"
     },
-    "ins1_values_2": {
+    "ins1_values_1": {
         "fr": "Oui",
         "pl": "Tak"
     },
@@ -1707,11 +1713,11 @@ export default {
         "fr": "Trop difficile",
         "pl": "Zbyt trudne"
     },
-    "chat1_values_1": {
+    "chat1_values_0": {
         "fr": "Non",
         "pl": "Nie"
     },
-    "chat1_values_2": {
+    "chat1_values_1": {
         "fr": "Oui",
         "pl": "Tak"
     },

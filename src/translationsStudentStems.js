@@ -69,7 +69,7 @@ export default {
     },
     "msa1": {
         "fr": "J’ai de bonnes compétences en mathématiques.",
-        "pl": "Jestem uzdolniony matematycznie."
+        "pl": "Mam zdolności matematyczne.."
     },
     "msa2": {
         "fr": "Les mathématiques sont difficiles pour moi.",
@@ -121,7 +121,7 @@ export default {
     },
     "ses1": {
         "fr": "Combien de livres tes parents possèdent‑ils ?",
-        "pl": "Ile książek mają Twoi rodzice?"
+        "pl": "Ile mniej więcej książek jest w Twoim domu? Nie licz czasopism, gazet i podręczników szkolnych."
     },
     "anx1": {
         "fr": "Que ressens‑tu lorsqu’un cours de mathématiques approche ?",
