@@ -1,5 +1,5 @@
 export default {
-    "p": {
+    "480af070-8fe3-11f0-bfc6-e5f1bb3dab10_p_0": {
         "fr": "Lis chaque phrase attentivement. Décide si la phrase a du sens.\n\nSi elle n’a pas de sens, répond NON.\n\nSi elle a du sens, répond OUI.",
         "pl": "Czytaj uważnie każde zdanie. Zdecyduj, czy  ma sens.\n\nJeśli nie ma sensu, odpowiedz NIE.\n\nJeśli zdanie ma sens, odpowiedz TAK."
     },
