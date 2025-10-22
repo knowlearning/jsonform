@@ -710,22 +710,26 @@ export default {
         "pl": "Ułamki i liczby dziesiętne"
     },
     "seq1_values_5": {
+        "fr": "Fractions",
+        "pl": "Ułamki"
+    },
+    "seq1_values_6": {
         "fr": "Multiplication",
         "pl": "Mnożenie"
     },
-    "seq1_values_6": {
+    "seq1_values_7": {
         "fr": "Multiplication et division",
         "pl": "Mnożenie i dzielenie"
     },
-    "seq1_values_7": {
+    "seq1_values_8": {
         "fr": "Motifs",
         "pl": "Wzory"
     },
-    "seq1_values_8": {
+    "seq1_values_9": {
         "fr": "Valeur de position",
         "pl": "Dziesiątkowy system pozycyjny"
     },
-    "seq1_values_9": {
+    "seq1_values_10": {
         "fr": "Valeur de position et arrondis",
         "pl": "Dziesiątkowy system pozycyjny i zaokrąglanie"
     },
