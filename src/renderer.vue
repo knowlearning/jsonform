@@ -135,7 +135,7 @@
             itemDef.type === 'checkbox-group'
             || itemDef.type === 'select' && multiple
           ) {
-            response = userDataCopy
+            response = userDataCopy.join(',')
           } else {
             const trimmed = userDataCopy[0].trim()
             const num = Number(trimmed)
