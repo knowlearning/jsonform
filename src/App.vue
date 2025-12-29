@@ -6,6 +6,7 @@ import Builder from './builder.vue'
 import Renderer from './renderer.vue'
 import FormSelector from './form-selector.vue'
 import Loading from './loading.vue'
+import exportQuestionareData from './exportQuestionareData.js'
 
 const activeId = ref(null)
 
@@ -17,6 +18,8 @@ const updated = ref(Date.now())
 const ownerIsUser = ref(false)
 const validPath = ref(null)
 const loading = ref(true)
+const pathId = ref(window.location.pathname.slice(1))
+const questionaireIdInput= ref('')
 
 const FORM_TYPE = "application/json;type=kl-json-form&version=1.0.1"
 
@@ -29,10 +32,9 @@ onMounted(async () => {
   Object.assign(myLocalForms, myACTIVEKLForms) 
 
   const { auth: { user } } = await Agent.environment()
-  const pathId = window.location.pathname.slice(1)
-  validPath.value = isUUID(pathId)
+  validPath.value = isUUID(pathId.value)
   if (validPath.value) {
-    const md = await Agent.metadata(pathId)
+    const md = await Agent.metadata(pathId.value)
     ownerIsUser.value = md.owner === user
     activeId.value = md.id
   }
@@ -71,11 +73,25 @@ async function copy(id) {
     `Copy of ${name}`
   )
 }
+
 </script>
 
 <template>
   <Suspense>
-    <Loading v-if="loading" v-model="loading"  />
+    <div v-if="pathId === 'export'">
+      Enter ids on separate lines for all questionaires to include in export:
+      <br>
+      <textarea
+        v-model="questionaireIdInput"
+        style="
+          width: 90vw;
+          min-height: 50vh;
+        "
+      />
+      <br>
+      <button @click="exportQuestionareData">Export</button>
+    </div>
+    <Loading v-else-if="loading" v-model="loading"  />
     <Renderer v-else-if="embedded && validPath"
       :key="updated"
       :id="activeId"
