@@ -89,7 +89,7 @@ async function copy(id) {
         "
       />
       <br>
-      <button @click="exportQuestionareData">Export</button>
+      <button @click="exportQuestionareData(questionaireIdInput)">Export</button>
     </div>
     <Loading v-else-if="loading" v-model="loading"  />
     <Renderer v-else-if="embedded && validPath"
