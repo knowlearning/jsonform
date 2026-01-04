@@ -45,10 +45,26 @@ export default async function exportQuestionareData(data) {
 
   //  item id (name) | item type | whether or not reqd | sequence id | questionaire id | sequence name | questionaire name | num choices | item label | ...item label translations
   const rows = await Promise.all(
-    validatedUuids.map(questionaireItemRows)
+    validatedUuids.map(processId)
   )
 
   download(JSON.stringify(rows, null, 4), 'stuff.txt')
+}
+
+async function processId(id) {
+  const s = await Agent.state(id)
+  if (s.formData) return questionaireItemRows(id)
+  else if ('application/json;type=sequence' === await Agent.metadata(id).then(s => s.active_type)) {
+    return sequenceRows(id)
+  }
+}
+
+async function sequenceRows(id) {
+  const sequence = await Agent.state(id)
+  const questionaireIds = await Promise.all(sequence.items.map(item => item.id))
+  return Promise.all(
+    questionaireIds.map(questionaireItemRows)
+  )
 }
 
 async function questionaireItemRows(questionaire_id) {
