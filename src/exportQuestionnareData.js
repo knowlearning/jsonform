@@ -11,11 +11,11 @@ export default async function exportQuestionareData(data) {
     return []
   }
 
-  //  TODO: Gather data for each questionaire and create csv for formats here: https://oecd.sharepoint.com/:x:/r/teams/2022-33BFDV/_layouts/15/Doc.aspx?sourcedoc=%7B8FB43087-02A2-452F-A21B-9D2067D4A80A%7D&file=Data%20output%20structure.xlsx&action=default&mobileredirect=true
+  //  TODO: Gather data for each questionnaire and create csv for formats here: https://oecd.sharepoint.com/:x:/r/teams/2022-33BFDV/_layouts/15/Doc.aspx?sourcedoc=%7B8FB43087-02A2-452F-A21B-9D2067D4A80A%7D&file=Data%20output%20structure.xlsx&action=default&mobileredirect=true
 
-  //  item id (name) | item type | whether or not reqd | sequence id | questionaire id | sequence name | questionaire name | num choices | item label | ...item label translations
+  //  item id (name) | item type | whether or not reqd | sequence id | questionnaire id | sequence name | questionnaire name | num choices | item label | ...item label translations
   const rows = await Promise.all(
-    questionnaireIds.map(questionaireItemRows)
+    questionnaireIds.map(questionnaireItemRows)
   )
 
   download(JSON.stringify(rows, null, 4), 'stuff.txt')
@@ -23,7 +23,7 @@ export default async function exportQuestionareData(data) {
 
 async function processId(id) {
   const s = await Agent.state(id)
-  if (s.formData) return questionaireItemRows(id)
+  if (s.formData) return questionnaireItemRows(id)
   else if ('application/json;type=sequence' === await Agent.metadata(id).then(s => s.active_type)) {
     return sequenceRows(id)
   }
@@ -31,19 +31,19 @@ async function processId(id) {
 
 async function sequenceRows(id) {
   const sequence = await Agent.state(id)
-  const questionaireIds = await Promise.all(sequence.items.map(item => item.id))
+  const questionnaireIds = await Promise.all(sequence.items.map(item => item.id))
   return Promise.all(
-    questionaireIds.map(questionaireItemRows)
+    questionnaireIds.map(questionnaireItemRows)
   )
 }
 
-async function questionaireItemRows(questionaire_id) {
-  const q = await Agent.state(questionaire_id)
+async function questionnaireItemRows(questionnaire_id) {
+  const q = await Agent.state(questionnaire_id)
 
-  if (!q.formData) throw new Error('not a questionaire')
+  if (!q.formData) throw new Error('not a questionnaire')
 
   return q.formData.map(({ name, type, label, required }, index) => {
-    const id = name || `${questionaire_id}_${type}_${index}`
+    const id = name || `${questionnaire_id}_${type}_${index}`
     const labelTranslations = {}
 
     Object
@@ -52,8 +52,8 @@ async function questionaireItemRows(questionaire_id) {
 
     return {
       id,
-      questionaire_id,
-      questionaire_order: index,
+      questionnaire_id,
+      questionnaire_order: index,
       type,
       question: label,
       required,

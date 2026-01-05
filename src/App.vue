@@ -19,7 +19,7 @@ const ownerIsUser = ref(false)
 const validPath = ref(null)
 const loading = ref(true)
 const pathId = ref(window.location.pathname.slice(1))
-const questionaireIdInput= ref('')
+const questionnaireIdInput= ref('')
 
 const FORM_TYPE = "application/json;type=kl-json-form&version=1.0.1"
 
@@ -79,17 +79,17 @@ async function copy(id) {
 <template>
   <Suspense>
     <div v-if="pathId === 'export'">
-      Enter ids on separate lines for all questionaires to include in export:
+      Enter ids on separate lines for all questionnaires to include in export:
       <br>
       <textarea
-        v-model="questionaireIdInput"
+        v-model="questionnaireIdInput"
         style="
           width: 90vw;
           min-height: 50vh;
         "
       />
       <br>
-      <button @click="exportQuestionareData(questionaireIdInput)">Export</button>
+      <button @click="exportQuestionareData(questionnaireIdInput)">Export</button>
     </div>
     <Loading v-else-if="loading" v-model="loading"  />
     <Renderer v-else-if="embedded && validPath"
