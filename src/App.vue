@@ -7,6 +7,7 @@ import Renderer from './renderer.vue'
 import FormSelector from './form-selector.vue'
 import Loading from './loading.vue'
 import exportQuestionnareData from './exportQuestionnareData.js'
+import extractItemValues from './extractItemValues.js'
 
 const activeId = ref(null)
 
@@ -89,7 +90,9 @@ async function copy(id) {
         "
       />
       <br>
-      <button @click="exportQuestionnareData(questionnaireIdInput)">Export</button>
+      <button @click="exportQuestionnareData(questionnaireIdInput)">Export Questionnaire Data</button>
+      <button @click="extractItemValues(questionnaireIdInput)">Export Item Values</button>
+
     </div>
     <Loading v-else-if="loading" v-model="loading"  />
     <Renderer v-else-if="embedded && validPath"

@@ -1,4 +1,3 @@
-import { validate as isUUID } from 'uuid'
 import translations from './translationsCombined.js'
 import { extractQuestionnaireIds } from './extractQuestionnaireIds.js'
 
