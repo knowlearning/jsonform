@@ -14,7 +14,7 @@ export default async function exportQuestionnaireValues(data) {
 
   if (!questionnaireIds.length) {
     alert('No valid questionnaire IDs found.')
-    return []
+    return null
   }
 
   const rows = (
@@ -23,7 +23,10 @@ export default async function exportQuestionnaireValues(data) {
     )
   ).flat()
 
-  download(JSON.stringify(rows, null, 4), 'questionnaire-values.txt')
+ return {
+   filename: 'questionnaire-item-values.txt',
+   contents: JSON.stringify(rows, null, 4),
+ }
 }
 
 async function questionnaireValueRows(questionnaire_id) {
@@ -52,18 +55,4 @@ async function questionnaireValueRows(questionnaire_id) {
       }
     })
   })
-}
-
-function download(data, filename) {
-  const blob = new Blob([data], { type: 'text/csv;charset=utf-8' })
-  const url = URL.createObjectURL(blob)
-
-  const a = document.createElement('a')
-  a.href = url
-  a.download = filename
-  document.body.appendChild(a)
-  a.click()
-  a.remove()
-
-  URL.revokeObjectURL(url)
 }

@@ -74,6 +74,28 @@ async function copy(id) {
     `Copy of ${name}`
   )
 }
+async function exportAll() {
+  const results = await Promise.all([
+    exportQuestionnareData(questionnaireIdInput.value),
+    extractItemValues(questionnaireIdInput.value),
+  ])
+
+  results
+    .filter(Boolean)
+    .forEach(({ contents, filename }) => {
+      const blob = new Blob([contents], { type: 'text/csv;charset=utf-8' })
+      const url = URL.createObjectURL(blob)
+
+      const a = document.createElement('a')
+      a.href = url
+      a.download = filename
+      document.body.appendChild(a)
+      a.click()
+      a.remove()
+
+      URL.revokeObjectURL(url)
+    })
+}
 
 </script>
 
@@ -90,9 +112,7 @@ async function copy(id) {
         "
       />
       <br>
-      <button @click="exportQuestionnareData(questionnaireIdInput)">Export Questionnaire Data</button>
-      <button @click="extractItemValues(questionnaireIdInput)">Export Item Values</button>
-
+      <button @click="exportAll">Export</button>
     </div>
     <Loading v-else-if="loading" v-model="loading"  />
     <Renderer v-else-if="embedded && validPath"

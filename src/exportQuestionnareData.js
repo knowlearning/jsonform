@@ -7,7 +7,7 @@ export default async function exportQuestionareData(data) {
 
   if (!questionnaireIds.length) {
     alert('No valid questionnaire IDs found.')
-    return []
+    return null
   }
 
   //  TODO: Gather data for each questionnaire and create csv for formats here: https://oecd.sharepoint.com/:x:/r/teams/2022-33BFDV/_layouts/15/Doc.aspx?sourcedoc=%7B8FB43087-02A2-452F-A21B-9D2067D4A80A%7D&file=Data%20output%20structure.xlsx&action=default&mobileredirect=true
@@ -17,7 +17,10 @@ export default async function exportQuestionareData(data) {
     questionnaireIds.map(questionnaireItemRows)
   )
 
-  download(JSON.stringify(rows, null, 4), 'stuff.txt')
+  return {
+    filename: 'questionnaire-data.txt',
+    contents: JSON.stringify(rows, null, 4),
+ }
 }
 
 async function processId(id) {
