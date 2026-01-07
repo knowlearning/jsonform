@@ -13,13 +13,13 @@ export default async function exportQuestionareData(data) {
   //  TODO: Gather data for each questionnaire and create csv for formats here: https://oecd.sharepoint.com/:x:/r/teams/2022-33BFDV/_layouts/15/Doc.aspx?sourcedoc=%7B8FB43087-02A2-452F-A21B-9D2067D4A80A%7D&file=Data%20output%20structure.xlsx&action=default&mobileredirect=true
 
   //  item id (name) | item type | whether or not reqd | sequence id | questionnaire id | sequence name | questionnaire name | num choices | item label | ...item label translations
-  const rows = await Promise.all(
+  const rows = (await Promise.all(
     questionnaireIds.map(questionnaireItemRows)
-  )
+  )).flat()
 
   return {
     filename: 'questionnaire-data.txt',
-    contents: JSON.stringify(rows, null, 4),
+    rows
  }
 }
 
@@ -62,18 +62,4 @@ async function questionnaireItemRows(questionnaire_id) {
       ...labelTranslations
     } //  TODO: add sequence id
   }).filter(v => v != null)
-}
-
-function download(data, filename) {
-  const blob = new Blob([data], { type: 'text/csv;charset=utf-8' })
-  const url = URL.createObjectURL(blob)
-
-  const a = document.createElement('a')
-  a.href = url
-  a.download = filename
-  document.body.appendChild(a)
-  a.click()
-  a.remove()
-
-  URL.revokeObjectURL(url)
 }

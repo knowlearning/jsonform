@@ -8,6 +8,7 @@ import FormSelector from './form-selector.vue'
 import Loading from './loading.vue'
 import exportQuestionnareData from './exportQuestionnareData.js'
 import extractItemValues from './extractItemValues.js'
+import downloadCsv from './csvUtils.js'
 
 const activeId = ref(null)
 
@@ -74,6 +75,7 @@ async function copy(id) {
     `Copy of ${name}`
   )
 }
+
 async function exportAll() {
   const results = await Promise.all([
     exportQuestionnareData(questionnaireIdInput.value),
@@ -82,19 +84,7 @@ async function exportAll() {
 
   results
     .filter(Boolean)
-    .forEach(({ contents, filename }) => {
-      const blob = new Blob([contents], { type: 'text/csv;charset=utf-8' })
-      const url = URL.createObjectURL(blob)
-
-      const a = document.createElement('a')
-      a.href = url
-      a.download = filename
-      document.body.appendChild(a)
-      a.click()
-      a.remove()
-
-      URL.revokeObjectURL(url)
-    })
+    .forEach(({ filename, rows }) => downloadCsv(filename, rows))
 }
 
 </script>

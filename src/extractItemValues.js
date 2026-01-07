@@ -17,15 +17,13 @@ export default async function exportQuestionnaireValues(data) {
     return null
   }
 
-  const rows = (
-    await Promise.all(
-      questionnaireIds.map(questionnaireValueRows)
-    )
-  ).flat()
+  const rows = (await Promise.all(
+    questionnaireIds.map(questionnaireValueRows)
+  )).flat()
 
  return {
    filename: 'questionnaire-item-values.txt',
-   contents: JSON.stringify(rows, null, 4),
+   rows
  }
 }
 
