@@ -6,6 +6,9 @@ import Builder from './builder.vue'
 import Renderer from './renderer.vue'
 import FormSelector from './form-selector.vue'
 import Loading from './loading.vue'
+import exportQuestionnareData from './exportQuestionnareData.js'
+import extractItemValues from './extractItemValues.js'
+import downloadCsv from './csvUtils.js'
 
 const activeId = ref(null)
 
@@ -17,6 +20,8 @@ const updated = ref(Date.now())
 const ownerIsUser = ref(false)
 const validPath = ref(null)
 const loading = ref(true)
+const pathId = ref(window.location.pathname.slice(1))
+const questionnaireIdInput= ref('')
 
 const FORM_TYPE = "application/json;type=kl-json-form&version=1.0.1"
 
@@ -29,10 +34,9 @@ onMounted(async () => {
   Object.assign(myLocalForms, myACTIVEKLForms) 
 
   const { auth: { user } } = await Agent.environment()
-  const pathId = window.location.pathname.slice(1)
-  validPath.value = isUUID(pathId)
+  validPath.value = isUUID(pathId.value)
   if (validPath.value) {
-    const md = await Agent.metadata(pathId)
+    const md = await Agent.metadata(pathId.value)
     ownerIsUser.value = md.owner === user
     activeId.value = md.id
   }
@@ -71,11 +75,36 @@ async function copy(id) {
     `Copy of ${name}`
   )
 }
+
+async function exportAll() {
+  const results = await Promise.all([
+    exportQuestionnareData(questionnaireIdInput.value),
+    extractItemValues(questionnaireIdInput.value),
+  ])
+
+  results
+    .filter(Boolean)
+    .forEach(({ filename, rows }) => downloadCsv(filename, rows))
+}
+
 </script>
 
 <template>
   <Suspense>
-    <Loading v-if="loading" v-model="loading"  />
+    <div v-if="pathId === 'export'">
+      Enter ids on separate lines for all questionnaires to include in export:
+      <br>
+      <textarea
+        v-model="questionnaireIdInput"
+        style="
+          width: 90vw;
+          min-height: 50vh;
+        "
+      />
+      <br>
+      <button @click="exportAll">Export</button>
+    </div>
+    <Loading v-else-if="loading" v-model="loading"  />
     <Renderer v-else-if="embedded && validPath"
       :key="updated"
       :id="activeId"
