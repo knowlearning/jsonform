@@ -50,7 +50,7 @@ async function questionnaireItemRows(questionnaire_id) {
 
     Object
       .entries(translations[id] || {})
-      .forEach((lang, value) => labelTranslations[`question_${lang}`] = value)
+      .forEach(([lang, value]) => labelTranslations[`question_${lang}`] = value)
 
     return {
       id,
