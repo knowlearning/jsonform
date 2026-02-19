@@ -1,3 +1,4 @@
+import DOMPurify from 'dompurify'
 import translations from './translationsCombined.js'
 import { extractQuestionnaireIds } from './extractQuestionnaireIds.js'
 
@@ -57,7 +58,7 @@ async function questionnaireItemRows(questionnaire_id) {
       questionnaire_id,
       questionnaire_order: index,
       type,
-      question: label,
+      question: DOMPurify.sanitize(label, { ALLOWED_TAGS: [] }), // cuz of jank tables and whatnot inside
       required,
       ...labelTranslations
     } //  TODO: add sequence id
