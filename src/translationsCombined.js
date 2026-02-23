@@ -1,5 +1,4 @@
-import teacherStems from './translationsTeacherStems.js'
-import studentStems from './translationsStudentStems.js'
+import translationStems from './translationStems.js'
 import itemInnerValues from './translationsItemInnerValues.js'
 
 // Key is [itemName] for first-level labels
@@ -7,8 +6,7 @@ import itemInnerValues from './translationsItemInnerValues.js'
 // for the "choices" inside an item, the key is [itemName]_values_[value]
 
 export default {
-	...teacherStems,
-	...studentStems,
+	...translationStems,
 	...itemInnerValues,
 	button_next: {
 		fr: "Suivant",
