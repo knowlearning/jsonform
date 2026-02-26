@@ -16,3 +16,51 @@ if (provider === 'anonymous') Agent.login('google')
 overlayApp.unmount()
 
 createApp(App).mount('#app')
+
+/*
+  Custom behavior for radio groups that allow deselect when NOT-required
+*/
+
+document.addEventListener('click', function (e) {
+  const radio = e.target.closest('input[type="radio"]')
+  if (!radio) return
+
+  const groupContainer = radio.closest('.formbuilder-radio-group')
+  if (!groupContainer) return
+
+  const groupIsRequired =
+    groupContainer.querySelector('.formbuilder-required') ||
+    groupContainer.querySelector('input[type="radio"][required]')
+
+  if (groupIsRequired) return
+
+  if (radio.dataset.wasChecked === 'true') {
+    radio.checked = false
+    radio.dataset.wasChecked = 'false'
+    radio.dispatchEvent(new Event('change', { bubbles: true }))
+    return
+  }
+
+  const groupName = radio.name
+
+  document
+    .querySelectorAll(`input[type="radio"][name="${CSS.escape(groupName)}"]`)
+    .forEach(r => r.dataset.wasChecked = 'false')
+
+  radio.dataset.wasChecked = 'true'
+})
+
+document.addEventListener('change', function (e) {
+  const radio = e.target.closest('input[type="radio"]')
+  if (!radio) return
+
+  const groupName = radio.name
+
+  document
+    .querySelectorAll(`input[type="radio"][name="${CSS.escape(groupName)}"]`)
+    .forEach(r => r.dataset.wasChecked = 'false')
+
+  if (radio.checked) {
+    radio.dataset.wasChecked = 'true'
+  }
+})
