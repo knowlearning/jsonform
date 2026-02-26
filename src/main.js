@@ -64,3 +64,19 @@ document.addEventListener('change', function (e) {
     radio.dataset.wasChecked = 'true'
   }
 })
+
+document.addEventListener('change', function (e) {
+  const input = e.target.closest('input[type="number"]')
+  if (!input) return
+  if (!input.hasAttribute('min') && !input.hasAttribute('max')) return
+  if (input.value === '') return
+
+  const { validity } = input
+  const invalid =
+    validity.badInput ||
+    validity.rangeUnderflow ||
+    validity.rangeOverflow ||
+    validity.stepMismatch
+
+  if (invalid) input.value = ''
+})
