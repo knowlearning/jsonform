@@ -580,19 +580,19 @@ export default {
     "pl": "żadne z powyższych"
   },
   "imp4_values_1": {
-    "fr": "Très peu",
+    "fr": "Pas du tout",
     "pl": "Wcale"
   },
   "imp4_values_2": {
-    "fr": "Peu",
+    "fr": "Très peu",
     "pl": "Trochę"
   },
   "imp4_values_3": {
-    "fr": "Modéré",
+    "fr": "Assez",
     "pl": "Umiarkowanie"
   },
   "imp4_values_4": {
-    "fr": "Assez",
+    "fr": "Beaucoup",
     "pl": "Nieco"
   },
   "imp4_values_5": {
@@ -2465,16 +2465,16 @@ export default {
     "pl": "Nie zaobserwowałem/am, aby uczniowie korzystali z chatbota"
   },
   "imp5_values_1": {
-    "fr": "Très peu"
+    "fr": "Pas du tout"
   },
   "imp5_values_2": {
-    "fr": "Peu"
+    "fr": "Très peu"
   },
   "imp5_values_3": {
-    "fr": "Modéré"
+    "fr": "Assez"
   },
   "imp5_values_4": {
-    "fr": "Assez"
+    "fr": "Beaucoup"
   },
   "rec3_values_0": {
     "fr": "Non"
@@ -3373,7 +3373,7 @@ export default {
     "fr": "Capacité d’Action sur le Programme et la Conception des Cours"
   },
   "f48061b0-003f-11f1-bca0-49df6e6e4785_paragraph_2": {
-    "fr": "Quel degré autonomie avez-vous sur les aspects suivants de la planification et de l’enseignement dans votre classe ?"
+    "fr": "Quel degré d'autonomie avez-vous sur les aspects suivants de la planification et de l’enseignement dans votre classe?"
   },
   "tcur2": {
     "fr": "Mise en œuvre du programme de manière flexible"
@@ -3708,13 +3708,13 @@ export default {
     "fr": "Lors d'une journée scolaire normale, combien de temps passes-tu à faire tes devoirs ?"
   },
   "252b7840-0b49-11f1-8323-5157ec42843c_paragraph_0": {
-    "fr": "Sur l'écran suivant, vous verrez des mots. Tape ces mots aussi rapidement et précisément que possible dans la case prévue à cet effet. \n\nRemarque : cette tâche est chronométrée."
+    "fr": "Sur l'écran suivant, tu verras des mots. Tape ces mots aussi rapidement et précisément que possible dans la case prévue à cet effet. Remarque : cette tâche est chronométrée."
   },
   "type": {
     "fr": "Mots à taper : École primaire"
   },
   "b3db4220-0b56-11f1-b623-afb003a0c887_paragraph_0": {
-    "fr": "Sur l'écran suivant, tu verras une série de phrases. Lis attentivement chaque phrase. \n\nRépond OUI si la phrase a du sens ; NON si elle n'a pas de sens.\n\nExemples de réponses correctes :   \nLe garçon a bu un verre de lait. OUI \nLes chaussures ont chanté une chanson joyeuse. NON \n\nRemarque : ces tâches sont chronométrées."
+    "fr": "Sur l'écran suivant, tu verras une série de phrases. Lis attentivement chaque phrase. <br><br>Répond OUI si la phrase a du sens ; NON si elle n'a pas de sens.<br><br>Exemples de réponses correctes :   <br>Le garçon a bu un verre de lait. OUI <br>Les chaussures ont chanté une chanson joyeuse. NON <br><br>Remarque : ces tâches sont chronométrées."
   },
   "69b2c6e0-00e9-11f1-9f33-a5c9633e2a5c_header_0": {
     "fr": "Cette phrase a-t-elle du sens ?"
