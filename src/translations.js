@@ -2594,7 +2594,7 @@ export default {
     "fr": "Plus d'1 heure"
   },
   "mse1_4g_values_1": {
-    "fr": "Je peux le faire tout seule"
+    "fr": "Je peux le faire tout(e) seul(e)"
   },
   "mse1_4g_values_2": {
     "fr": "Presque tout(e) seul(e), j'ai peut-être besoin d'un peu d’aide"
@@ -2606,7 +2606,7 @@ export default {
     "fr": "Je ne peux pas le faire, j'ai besoin de beaucoup d’aide"
   },
   "mse2_4g_values_1": {
-    "fr": "Je peux le faire tout seule"
+    "fr": "Je peux le faire tout(e) seul(e)"
   },
   "mse2_4g_values_2": {
     "fr": "Presque tout(e) seul(e), j'ai peut-être besoin d'un peu d’aide"
@@ -2618,7 +2618,7 @@ export default {
     "fr": "Je ne peux pas le faire, j'ai besoin de beaucoup d’aide"
   },
   "mse3_4g_values_1": {
-    "fr": "Je peux le faire tout seule"
+    "fr": "Je peux le faire tout(e) seul(e)"
   },
   "mse3_4g_values_2": {
     "fr": "Presque tout(e) seul(e), j'ai peut-être besoin d'un peu d’aide"
@@ -2630,7 +2630,7 @@ export default {
     "fr": "Je ne peux pas le faire, j'ai besoin de beaucoup d’aide"
   },
   "mse4_4g_values_1": {
-    "fr": "Je peux le faire tout seule"
+    "fr": "Je peux le faire tout(e) seul(e)"
   },
   "mse4_4g_values_2": {
     "fr": "Presque tout(e) seul(e), j'ai peut-être besoin d'un peu d’aide"
@@ -2810,7 +2810,7 @@ export default {
     "fr": "Tout à fait d’accord"
   },
   "mse1_5g_values_1": {
-    "fr": "Je peux le faire tout seule"
+    "fr": "Je peux le faire tout(e) seul(e)"
   },
   "mse1_5g_values_2": {
     "fr": "Presque tout(e) seul(e), j'ai peut-être besoin d'un peu d’aide"
@@ -2822,7 +2822,7 @@ export default {
     "fr": "Je ne peux pas le faire, j'ai besoin de beaucoup d’aide"
   },
   "mse2_5g_values_1": {
-    "fr": "Je peux le faire tout seule"
+    "fr": "Je peux le faire tout(e) seul(e)"
   },
   "mse2_5g_values_2": {
     "fr": "Presque tout(e) seul(e), j'ai peut-être besoin d'un peu d’aide"
@@ -2834,7 +2834,7 @@ export default {
     "fr": "Je ne peux pas le faire, j'ai besoin de beaucoup d’aide"
   },
   "mse3_5g_values_1": {
-    "fr": "Je peux le faire tout seule"
+    "fr": "Je peux le faire tout(e) seul(e)"
   },
   "mse3_5g_values_2": {
     "fr": "Presque tout(e) seul(e), j'ai peut-être besoin d'un peu d’aide"
@@ -2846,7 +2846,7 @@ export default {
     "fr": "Je ne peux pas le faire, j'ai besoin de beaucoup d’aide"
   },
   "mse4_5g_values_1": {
-    "fr": "Je peux le faire tout seule"
+    "fr": "Je peux le faire tout(e) seul(e)"
   },
   "mse4_5g_values_2": {
     "fr": "Presque tout(e) seul(e), j'ai peut-être besoin d'un peu d’aide"
@@ -3239,7 +3239,7 @@ export default {
     "fr": "Quel est l'âge moyen des appareils disponibles ?"
   },
   "sze": {
-    "fr": "Laquelle des définitions suivantes décrit le mieux la zone dans laquelle votre école est située ?"
+    "fr": "Laquelle des définitions suivantes décrit le mieux la zone dans laquelle votre ecole est située ?"
   },
   "sesc": {
     "fr": "Environ quel pourcentage d’élèves de cette classe proviennent de familles socioéconomiquement défavorisées ?"
@@ -3385,7 +3385,7 @@ export default {
     "fr": "Stress de l'enseignant(e)"
   },
   "f48061b0-003f-11f1-bca0-49df6e6e4785_paragraph_6": {
-    "fr": "D'après votre expérience d'enseignant(e) dans cette école, dans quelle mesure les situations suivantes se produisent-elles ?"
+    "fr": "D'après votre expérience d'enseignant(e) dans cette ecole, dans quelle mesure les situations suivantes se produisent-elles ?"
   },
   "strs1": {
     "fr": "Je ressens du stress dans mon travail. "
@@ -3628,7 +3628,7 @@ export default {
     "pl": "Zaobserwowałem/am poprawę u uczniów w zakresie (zaznacz wszystkie pasujące):"
   },
   "imp5": {
-    "fr": "Le chatbot a été utile pour mes élèves."
+    "fr": "Le chatbot a été utile pour mes élèves. (Répondez si vous avez utilisé le chatbot, sinon passez cette question.)"
   },
   "imp4": {
     "fr": "J’ai apprécié utiliser la plateforme.",
@@ -3693,7 +3693,7 @@ export default {
     "fr": "Participer à des activités comme le sport, le cinéma ou les concerts, pour lesquelles il faut payer"
   },
   "ses7": {
-    "fr": "Partir en sorties scolaires ou participer à des activités de l’école qui coûtent de l’argent"
+    "fr": "Partir en sorties scolaires ou participer à des activités de l’ecole qui coûtent de l’argent"
   },
   "ses8": {
     "fr": "Faire la fête pour des jours spéciaux (Par exemple : anniversaires, réveillon du Nouvel An…)"
@@ -3711,7 +3711,7 @@ export default {
     "fr": "Sur l'écran suivant, tu verras des mots. Tape ces mots aussi rapidement et précisément que possible dans la case prévue à cet effet. Remarque : cette tâche est chronométrée."
   },
   "type": {
-    "fr": "Mots à taper : École primaire"
+    "fr": "Mots à taper : Ecole primaire"
   },
   "b3db4220-0b56-11f1-b623-afb003a0c887_paragraph_0": {
     "fr": "Sur l'écran suivant, tu verras une série de phrases. Lis attentivement chaque phrase. <br><br>Répond OUI si la phrase a du sens ; NON si elle n'a pas de sens.<br><br>Exemples de réponses correctes :   <br>Le garçon a bu un verre de lait. OUI <br>Les chaussures ont chanté une chanson joyeuse. NON <br><br>Remarque : ces tâches sont chronométrées."
@@ -3756,7 +3756,7 @@ export default {
     "fr": "Avoir un problème de mathématiques difficile à résoudre "
   },
   "max2": {
-    "fr": "Regarder une maîtresse / un maître résoudre un problème de mathématiques au tableau  "
+    "fr": "Regarder la maîtresse/le maître résoudre un problème de mathématiques au tableau  "
   },
   "max3": {
     "fr": "Passer un test de mathématiques  "
