@@ -3711,7 +3711,7 @@ export default {
     "fr": "Sur l'écran suivant, tu verras des mots. Tape ces mots aussi rapidement et précisément que possible dans la case prévue à cet effet. Remarque : cette tâche est chronométrée."
   },
   "type": {
-    "fr": "Mots à taper : Ecole primaire"
+    "fr": "Mots à taper : école primaire"
   },
   "b3db4220-0b56-11f1-b623-afb003a0c887_paragraph_0": {
     "fr": "Sur l'écran suivant, tu verras une série de phrases. Lis attentivement chaque phrase. <br><br>Répond OUI si la phrase a du sens ; NON si elle n'a pas de sens.<br><br>Exemples de réponses correctes :   <br>Le garçon a bu un verre de lait. OUI <br>Les chaussures ont chanté une chanson joyeuse. NON <br><br>Remarque : ces tâches sont chronométrées."
