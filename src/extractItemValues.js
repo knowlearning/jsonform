@@ -22,7 +22,7 @@ export default async function exportQuestionnaireValues(data) {
   )).flat()
 
  return {
-   filename: 'questionnaire-item-values.txt',
+   filename: 'questionnaire-item-values',
    rows
  }
 }
