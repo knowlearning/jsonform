@@ -2990,8 +2990,8 @@ export default {
     "fr": "Tout à fait d’accord"
   },
   "480af070-8fe3-11f0-bfc6-e5f1bb3dab10_paragraph_0": {
-    "fr": "Lis chaque phrase attentivement. Décide si la phrase a du sens.\n\nSi elle n’a pas de sens, répond NON.\n\nSi elle a du sens, répond OUI.",
-    "pl": "Czytaj uważnie każde zdanie. Zdecyduj, czy  ma sens.\n\nJeśli nie ma sensu, odpowiedz NIE.\n\nJeśli zdanie ma sens, odpowiedz TAK."
+    "fr": "Lis chaque phrase attentivement. Décide si la phrase a du sens.<br><br>Si elle n’a pas de sens, répond NON.<br><br>Si elle a du sens, répond OUI.",
+    "pl": "Czytaj uważnie każde zdanie. Zdecyduj, czy  ma sens.<br><br>Jeśli nie ma sensu, odpowiedz NIE.<br><br>Jeśli zdanie ma sens, odpowiedz TAK."
   },
   "read1": {
     "fr": "La fille portait un pantalon rouge.",
@@ -3054,8 +3054,8 @@ export default {
     "pl": "Niebieska butelka napisała czerwony list."
   },
   "type1": {
-    "fr": "Lis le passage. Tape-le exactement tel qu’il est écrit dans le champ ci-dessous. Travaille rapidement, mais essaye de ne pas faire d’erreurs :\nÀ la récréation, nous avons joué à un petit jeu dans la cour.\nJ’ai passé le ballon à mon ami et nous avons ri tous les deux.\nAprès le coup de sifflet, nous nous sommes mis en rang et nous sommes retournés en classe.",
-    "pl": "Przeczytaj fragment. Przepisz go dokładnie tak, jak jest napisany, w polu poniżej. Pracuj szybko, ale staraj się nie popełniać błędów:\nNa przerwie zagraliśmy w krótką grę na boisku.\nPodałem/Podałam piłkę koledze i oboje się zaśmialiśmy.\nPo gwizdku ustawiliśmy się w szeregu i wróciliśmy do klasy."
+    "fr": "Lis le passage. Tape-le exactement tel qu’il est écrit dans le champ ci-dessous. Travaille rapidement, mais essaye de ne pas faire d’erreurs :<br>À la récréation, nous avons joué à un petit jeu dans la cour.<br>J’ai passé le ballon à mon ami et nous avons ri tous les deux.<br>Après le coup de sifflet, nous nous sommes mis en rang et nous sommes retournés en classe.",
+    "pl": "Przeczytaj fragment. Przepisz go dokładnie tak, jak jest napisany, w polu poniżej. Pracuj szybko, ale staraj się nie popełniać błędów:<br>Na przerwie zagraliśmy w krótką grę na boisku.<br>Podałem/Podałam piłkę koledze i oboje się zaśmialiśmy.<br>Po gwizdku ustawiliśmy się w szeregu i wróciliśmy do klasy."
   },
   "msa1": {
     "fr": "J’ai de bonnes compétences en mathématiques.",
@@ -3834,9 +3834,9 @@ export default {
     "fr": "J'ai appris quelque chose de nouveau pendant ces cours. "
   },
   "d830d930-13be-11f1-9e71-9be7d7322951_paragraph_0": {
-    "fr": "L'équipe de recherche « The Power of Feedback » travaille à l'amélioration de l'enseignement des mathématiques. Pour atteindre cet objectif, nous recueillons des informations sur votre parcours, votre contexte d'enseignement et votre classe. \n\n Veuillez répondre honnêtement aux questions suivantes en vous basant sur votre expérience. Il n'y a pas de bonnes ou de mauvaises réponses, et toutes les réponses sont strictement confidentielles. Certaines questions ne sont pas obligatoires (pas de * rouge), mais veuillez y répondre si elles s'appliquent à votre situation."
+    "fr": "L'équipe de recherche « The Power of Feedback » travaille à l'amélioration de l'enseignement des mathématiques. Pour atteindre cet objectif, nous recueillons des informations sur votre parcours, votre contexte d'enseignement et votre classe. <br><br> Veuillez répondre honnêtement aux questions suivantes en vous basant sur votre expérience. Il n'y a pas de bonnes ou de mauvaises réponses, et toutes les réponses sont strictement confidentielles. Certaines questions ne sont pas obligatoires (pas de * rouge), mais veuillez y répondre si elles s'appliquent à votre situation."
   },
   "81622750-160f-11f1-9257-03e30d22b68c_paragraph_0": {
-    "fr": "Notre équipe de recherche souhaite comprendre comment améliorer l'apprentissage des mathématiques pour des élèves comme toi. C'est pour cette raison que tu vas répondre à des questions sur ta situation familiale et ton apprentissage des mathématiques.\n\nLis attentivement chaque question et choisis la réponse qui te décrit le mieux. Il n'y a pas de bonnes ou de mauvaises réponses. Tes réponses ne seront partagées qu'avec l'équipe de recherche, donc tu peux être honnête.\n\nCertaines questions ne sont pas obligatoires (pas de * rouge), mais réponds-y si elles s'appliquent à ta situation."
+    "fr": "Notre équipe de recherche souhaite comprendre comment améliorer l'apprentissage des mathématiques pour des élèves comme toi. C'est pour cette raison que tu vas répondre à des questions sur ta situation familiale et ton apprentissage des mathématiques.<br><br>Lis attentivement chaque question et choisis la réponse qui te décrit le mieux. Il n'y a pas de bonnes ou de mauvaises réponses. Tes réponses ne seront partagées qu'avec l'équipe de recherche, donc tu peux être honnête.<br><br>Certaines questions ne sont pas obligatoires (pas de * rouge), mais réponds-y si elles s'appliquent à ta situation."
   },
 }
