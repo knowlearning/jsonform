@@ -20,7 +20,7 @@ export function jsonToCsv(rows) {
 }
 
 export default function downloadCsv(filename, rows) {
-  '\uFEFF' + jsonToCsv(rows)
+  const contents = '\uFEFF' + jsonToCsv(rows)
   const blob = new Blob([contents], { type: 'text/csv;charset=utf-8' })
   const url = URL.createObjectURL(blob)
   const a = document.createElement('a')
