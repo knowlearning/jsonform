@@ -46,7 +46,7 @@ async function questionnaireValueRows(questionnaire_id) {
       })
       return {
         questionnaire_id,
-        id: name,
+        item_id: name,
         value: v.value,
         label: v.label,
         ...translatedLabels

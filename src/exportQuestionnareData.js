@@ -54,7 +54,7 @@ async function questionnaireItemRows(questionnaire_id) {
       .forEach(([lang, value]) => labelTranslations[`question_${lang}`] = value)
 
     return {
-      id,
+      item_id: id,
       questionnaire_id,
       questionnaire_order: index,
       type,
