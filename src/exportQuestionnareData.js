@@ -59,7 +59,7 @@ async function questionnaireItemRows(questionnaire_id) {
       questionnaire_order: index,
       type,
       question: DOMPurify.sanitize(label, { ALLOWED_TAGS: [] }), // cuz of jank tables and whatnot inside
-      required,
+      required: required ? 1 : 0,
       ...labelTranslations
     } //  TODO: add sequence id
   }).filter(v => v != null)
